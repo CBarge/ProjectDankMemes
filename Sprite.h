@@ -18,5 +18,6 @@ private:
 	float _height;
 	GLuint _vboID;	//vertex buffer objects!
 
+
 };
 

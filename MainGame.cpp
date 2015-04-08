@@ -24,7 +24,7 @@ void MainGame::run()
 
 	_sprite.init(-1.0f, -1.0f, 2.0f, 2.0f);	//temporary!!!
 
-	_playerTexture = ImageLoader::loadPNG("Textures/CharacterRight_Standing.png");
+	_playerTexture = ImageLoader::loadPNG("Textures/TubaCannon.png");
 
 	gameLoop();		//won't return until called to exit using GameState, keep in mind
 }
