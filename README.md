@@ -5,4 +5,4 @@ The shaders and textures folders go wherever the program directory is-this is de
 
 REMEMBER TO HAVE A CONSOLE OPEN UP AS A SUBPROCESS
 
-Rhenn: Currently working engine abstraction
+Rhenn: Currently working on camera simulation
