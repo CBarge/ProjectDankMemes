@@ -2,25 +2,39 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-class Camera2D
+namespace basic_SDL_engi
 {
-public:
-	Camera2D();
-	~Camera2D();
 
-	void update();
+	class Camera2D
+	{
+	public:
+		Camera2D();
+		~Camera2D();
 
-	void setPosition(glm::vec2& newPosition){ position = newPosition; }
-	void setScale(float newScale) { scale = newScale; }
+		//this creates orthomat and gets screen info
+		void init(int screenWidth, int screenHeight);
 
-	//getters
-	glm::vec2 getPosition() { return position; }
-	float getScale() { return scale; }
-	glm::mat4 getCameraMatrix() { return cameraMatrix; }
+		//updates camera matrix...if neccessary
+		void update();
 
-private:
-	float scale;
-	glm::vec2 position;
-	glm::mat4 cameraMatrix;
-};
+		//sets
+		void setPosition(glm::vec2& newPosition){ _position = newPosition; _needMatUpdate = true; }
+		void setScale(float newScale) { _scale = newScale; _needMatUpdate = true; }
+
+		//gets
+		glm::vec2 getPosition() { return _position; }
+		float getScale() { return _scale; }
+		glm::mat4 getCameraMatrix() { return _cameraMatrix; }
+
+	private:
+		int _screenWidth;
+		int _screenHeight;
+		bool _needMatUpdate;
+		float _scale;
+		glm::vec2 _position;
+		glm::mat4 _cameraMatrix;
+		glm::mat4 _orthoMat;
+	};
+
+}
 

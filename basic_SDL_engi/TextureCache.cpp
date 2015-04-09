@@ -30,10 +30,10 @@ namespace basic_SDL_engi
 			//inserting into map
 			_textureMap.insert(make_pair(texturePath, newTexture));
 
-			std::cout << "Cached texture loaded...\n";
+			std::cout << "Uncached texture loaded...\n";
 			return newTexture;
 		}
-		std::cout << "Uncached texture loaded...\n";
+		std::cout << "Cached texture loaded...\n";
 		//return texture in map
 		return mit->second;
 	}
