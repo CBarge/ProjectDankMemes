@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "graphTest", "graphTest\graphTest.vcxproj", "{D9A3705A-276E-452D-8DDF-F4F0CC27FC8A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A06D7AF0-D7BC-4FCC-A274-4E1AE645B461} = {A06D7AF0-D7BC-4FCC-A274-4E1AE645B461}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "basic_SDL_engi", "basic_SDL_engi\basic_SDL_engi.vcxproj", "{A06D7AF0-D7BC-4FCC-A274-4E1AE645B461}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9A3705A-276E-452D-8DDF-F4F0CC27FC8A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D9A3705A-276E-452D-8DDF-F4F0CC27FC8A}.Debug|Win32.Build.0 = Debug|Win32
+		{D9A3705A-276E-452D-8DDF-F4F0CC27FC8A}.Release|Win32.ActiveCfg = Release|Win32
+		{D9A3705A-276E-452D-8DDF-F4F0CC27FC8A}.Release|Win32.Build.0 = Release|Win32
+		{A06D7AF0-D7BC-4FCC-A274-4E1AE645B461}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A06D7AF0-D7BC-4FCC-A274-4E1AE645B461}.Debug|Win32.Build.0 = Debug|Win32
+		{A06D7AF0-D7BC-4FCC-A274-4E1AE645B461}.Release|Win32.ActiveCfg = Release|Win32
+		{A06D7AF0-D7BC-4FCC-A274-4E1AE645B461}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

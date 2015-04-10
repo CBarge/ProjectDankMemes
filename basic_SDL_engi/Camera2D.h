@@ -17,6 +17,8 @@ namespace basic_SDL_engi
 		//updates camera matrix...if neccessary
 		void update();
 
+		glm::vec2 convSCoordsToWCoords(glm::vec2 screenCoords);
+
 		//sets
 		void setPosition(glm::vec2& newPosition){ _position = newPosition; _needMatUpdate = true; }
 		void setScale(float newScale) { _scale = newScale; _needMatUpdate = true; }

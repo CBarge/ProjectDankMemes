@@ -16,6 +16,8 @@
 #include <basic_SDL_engi/Window.h>
 #include <basic_SDL_engi/Camera2D.h>
 #include <basic_SDL_engi/SpriteBatch.h>
+#include <basic_SDL_engi/InputManager.h>
+#include <basic_SDL_engi/Time.h>
 
 //for finding out what is going on, man
 enum class GameState{PLAYING, EXIT};
@@ -34,7 +36,6 @@ private:
 	void gameLoop();
 	void processInput();
 	void drawGame();
-	void calcFPS();
 
 	basic_SDL_engi::Window _window;	//window creation, private FOR A REASON!!!
 	int _screenWidth;
@@ -44,11 +45,11 @@ private:
 	basic_SDL_engi::GLSLProgram _colorProgram;
 	basic_SDL_engi::Camera2D _camera;
 	basic_SDL_engi::SpriteBatch _spriteBatch;
+	basic_SDL_engi::InputManager _inputManager;
+	basic_SDL_engi::FPSLimiter _fpsLimiter;
 
 	float _fps;
-	float _maxFPS;
-	float _frameTime;
-
+	float _max;
 	float _time;
 };
 

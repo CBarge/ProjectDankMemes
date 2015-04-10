@@ -1,6 +1,2 @@
-﻿  MainGame.cpp
-f:\documents\programming\visual studio 2013\projects\graphtest\graphtest\maingame.cpp(55): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
-f:\documents\programming\visual studio 2013\projects\graphtest\graphtest\maingame.cpp(74): warning C4244: 'argument' : conversion from 'float' to 'Uint32', possible loss of data
-f:\documents\programming\visual studio 2013\projects\graphtest\graphtest\maingame.cpp(182): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
-f:\documents\programming\visual studio 2013\projects\graphtest\graphtest\maingame.cpp(184): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+﻿MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
   graphTest.vcxproj -> F:\Documents\Programming\Visual Studio 2013\Projects\graphTest\Debug\graphTest.exe

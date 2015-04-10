@@ -6,7 +6,7 @@ MainGame::MainGame() :
 	_screenWidth(1024), _screenHeight(768), 
 	_time(0.0f), 
 	_gameState(GameState::PLAYING),
-	_maxFPS(60.0f)
+	_max(60.0f)
 {
 	_camera.init(_screenWidth, _screenHeight);
 }
@@ -35,6 +35,8 @@ void MainGame::initSystems()
 	initShaders();
 
 	_spriteBatch.init();
+
+	_fpsLimiter.init(_max);
 }
 
 void MainGame::initShaders()
@@ -52,26 +54,23 @@ void MainGame::gameLoop()
 {
 	while (_gameState != GameState::EXIT)
 	{
-		float startTicks = SDL_GetTicks();
+		_fpsLimiter.begin();
+
 		processInput();
 		_time += 0.01f;
 
 		_camera.update();
 
 		drawGame();
-		calcFPS();
+
+		_fps = _fpsLimiter.end();
 
 		static int fCount = 0;
 		fCount++;
-		if (fCount == 10)
+		if (fCount == 1000)
 		{
 			std::cout << _fps << std::endl;
 			fCount = 0;
-		}
-		float frameTicks = SDL_GetTicks() - startTicks;
-		if (1000.0f / _maxFPS > frameTicks)
-		{
-			SDL_Delay(1000.0f / _maxFPS - frameTicks);		//8ms delay, OS specific!
 		}
 	}
 }
@@ -83,7 +82,7 @@ void MainGame::processInput()
 {
 	SDL_Event eventer;	//"event" is reserved. don't try to use it.
 
-	const float CAM_SPEED = 20.0f;
+	const float CAM_SPEED = 2.0f;
 	const float SCALE_SPEED = 0.1f;
 
 	while (SDL_PollEvent(&eventer))	//basically, while something is happening, do such and such
@@ -96,30 +95,53 @@ void MainGame::processInput()
 			break;
 		case SDL_MOUSEMOTION:
 			//std::cout << eventer.motion.x << " " << eventer.motion.y << std::endl;
+			_inputManager.setCursorCoords(eventer.motion.x, eventer.motion.y);
 			break;
 		case SDL_KEYDOWN:
-			switch (eventer.key.keysym.sym)
-			{
-			case SDLK_w:
-				_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, CAM_SPEED));
-				break;
-			case SDLK_s:
-				_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, -CAM_SPEED));
-				break;
-			case SDLK_a:
-				_camera.setPosition(_camera.getPosition() + glm::vec2(-CAM_SPEED, 0.0f));
-				break;
-			case SDLK_d:
-				_camera.setPosition(_camera.getPosition() + glm::vec2(CAM_SPEED, 0.0f));
-				break;
-			case SDLK_q:
-				_camera.setScale(_camera.getScale() - SCALE_SPEED);
-				break;
-			case SDLK_e:
-				_camera.setScale(_camera.getScale() + SCALE_SPEED);
-				break;
-			}
+			_inputManager.onPress(eventer.key.keysym.sym);
+			break;
+		case SDL_KEYUP:
+			_inputManager.onRelease(eventer.key.keysym.sym);
+			break;
+		case SDL_MOUSEBUTTONDOWN:
+			_inputManager.onPress(eventer.button.button);
+			break;
+		case SDL_MOUSEBUTTONUP:
+			_inputManager.onRelease(eventer.button.button);
+			break;
 		}
+	}
+
+	if (_inputManager.keyPressed(SDLK_w))
+	{
+		_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, CAM_SPEED));
+	}
+	if (_inputManager.keyPressed(SDLK_s))
+	{
+		_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, -CAM_SPEED));
+	}
+	if (_inputManager.keyPressed(SDLK_a))
+	{
+		_camera.setPosition(_camera.getPosition() + glm::vec2(-CAM_SPEED, 0.0f));
+	}
+	if (_inputManager.keyPressed(SDLK_d))
+	{
+		_camera.setPosition(_camera.getPosition() + glm::vec2(CAM_SPEED, 0.0f));
+	}
+	if (_inputManager.keyPressed(SDLK_q))
+	{
+		_camera.setScale(_camera.getScale() - SCALE_SPEED);
+	}
+	if (_inputManager.keyPressed(SDLK_e))
+	{
+		_camera.setScale(_camera.getScale() + SCALE_SPEED);
+	}
+
+	if (_inputManager.keyPressed(SDL_BUTTON_LEFT))
+	{
+		glm::vec2 cursorCoords = _inputManager.getCursorCoords();
+		cursorCoords = _camera.convSCoordsToWCoords(cursorCoords);
+		std::cout << cursorCoords.x << " " << cursorCoords.y << "\n";
 	}
 }
 
@@ -137,9 +159,6 @@ void MainGame::drawGame()
 	GLint textureLocation = _colorProgram.getUniformLocation("sampleTex");
 	glUniform1i(textureLocation, 0);
 
-	GLint timeLocation = _colorProgram.getUniformLocation("time");
-	glUniform1f(timeLocation, _time);
-
 	//setting camera matrix...
 	GLint pLocation = _colorProgram.getUniformLocation("P");
 	glm::mat4 cameraMatrix = _camera.getCameraMatrix();
@@ -151,7 +170,7 @@ void MainGame::drawGame()
 	//will later have an object to pass, this is placeholder
 	glm::vec4 pos(0.0f, 0.0f, 50.0f, 50.0f);
 	glm::vec4 uv(0.0f, 0.0f, 1.0f, 1.0f);
-	static basic_SDL_engi::GLTexture texture = basic_SDL_engi::ResourceManager::getTexture("Textures/TubaCannon.png");
+	static basic_SDL_engi::GLTexture texture = basic_SDL_engi::ResourceManager::getTexture("Textures/Player/p2_duck.png");
 	basic_SDL_engi::Color color;
 	color.r = 255;
 	color.g = 255;
@@ -159,8 +178,6 @@ void MainGame::drawGame()
 	color.a = 255;
 	//needs position, uv, and depth
 	_spriteBatch.draw(pos, uv, texture.id, 0.0f, color);
-
-	_spriteBatch.draw(pos + glm::vec4(50, 0, 0, 0), uv, texture.id, 0.0f, color);
 
 	_spriteBatch.end();
 
@@ -171,48 +188,4 @@ void MainGame::drawGame()
 	_colorProgram.unuse();
 
 	_window.bufferSwap();		//sends last draw to screen
-}
-
-void MainGame::calcFPS()
-{
-	static const int SAMPLE_NUM = 10;
-	static float frameTimes[SAMPLE_NUM];
-	static int frame = 0;
-
-	static float prevTicks = SDL_GetTicks();
-
-	float currentTicks = SDL_GetTicks();
-
-	_frameTime = currentTicks - prevTicks;
-	frameTimes[frame % SAMPLE_NUM] = _frameTime;
-
-	prevTicks = currentTicks;
-
-	int count;
-
-	frame++;
-	if (frame < SAMPLE_NUM)
-	{
-		count = frame;
-	}
-	else
-	{
-		count = SAMPLE_NUM;
-	}
-
-	float frameTimeAvg = 0;
-	for (int i = 0; i < count; i++)
-	{
-		frameTimeAvg += frameTimes[i];
-	}
-	frameTimeAvg /= count;
-
-	if (frameTimeAvg > 0)
-	{
-		_fps = 1000.0f / frameTimeAvg;
-	}
-	else
-	{
-		_fps = 60.0f;
-	}
 }

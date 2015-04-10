@@ -63,6 +63,10 @@ namespace basic_SDL_engi
 		//enabling vsync...consensus needed on this. can be a settings option!
 		SDL_GL_SetSwapInterval(1);
 
+		//Enable alpha blending...
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 		return 0;
 	}
 
