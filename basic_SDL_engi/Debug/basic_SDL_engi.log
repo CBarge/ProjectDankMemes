@@ -1,4 +1,5 @@
-﻿  Camera2D.cpp
+﻿  InputManager.cpp
+f:\documents\programming\visual studio 2013\projects\graphtest\basic_sdl_engi\inputmanager.cpp(54): warning C4101: 'isPressed' : unreferenced local variable
 opengl32.lib(OPENGL32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in SDL2.lib(SDL2.dll); second definition ignored
 opengl32.lib(OPENGL32.dll) : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
 glew32.lib(glew32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in SDL2.lib(SDL2.dll); second definition ignored

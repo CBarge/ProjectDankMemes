@@ -42,6 +42,7 @@ namespace basic_SDL_engi
 
 	glm::vec2 Camera2D::convSCoordsToWCoords(glm::vec2 screenCoords)
 	{
+		screenCoords.y = _screenHeight - screenCoords.y;
 		screenCoords -= glm::vec2(_screenWidth / 2, _screenHeight / 2);
 		screenCoords /= _scale;		//ingenuity! not mine.
 		screenCoords += _position;

@@ -56,6 +56,8 @@ void MainGame::gameLoop()
 	{
 		_fpsLimiter.begin();
 
+		_inputManager.update();
+
 		processInput();
 		_time += 0.01f;
 
@@ -112,27 +114,27 @@ void MainGame::processInput()
 		}
 	}
 
-	if (_inputManager.keyPressed(SDLK_w))
+	if (_inputManager.keyDown(SDLK_w))
 	{
 		_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, CAM_SPEED));
 	}
-	if (_inputManager.keyPressed(SDLK_s))
+	if (_inputManager.keyDown(SDLK_s))
 	{
 		_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, -CAM_SPEED));
 	}
-	if (_inputManager.keyPressed(SDLK_a))
+	if (_inputManager.keyDown(SDLK_a))
 	{
 		_camera.setPosition(_camera.getPosition() + glm::vec2(-CAM_SPEED, 0.0f));
 	}
-	if (_inputManager.keyPressed(SDLK_d))
+	if (_inputManager.keyDown(SDLK_d))
 	{
 		_camera.setPosition(_camera.getPosition() + glm::vec2(CAM_SPEED, 0.0f));
 	}
-	if (_inputManager.keyPressed(SDLK_q))
+	if (_inputManager.keyDown(SDLK_q))
 	{
 		_camera.setScale(_camera.getScale() - SCALE_SPEED);
 	}
-	if (_inputManager.keyPressed(SDLK_e))
+	if (_inputManager.keyDown(SDLK_e))
 	{
 		_camera.setScale(_camera.getScale() + SCALE_SPEED);
 	}
@@ -171,11 +173,7 @@ void MainGame::drawGame()
 	glm::vec4 pos(0.0f, 0.0f, 50.0f, 50.0f);
 	glm::vec4 uv(0.0f, 0.0f, 1.0f, 1.0f);
 	static basic_SDL_engi::GLTexture texture = basic_SDL_engi::ResourceManager::getTexture("Textures/Player/p2_duck.png");
-	basic_SDL_engi::Color color;
-	color.r = 255;
-	color.g = 255;
-	color.b = 255;
-	color.a = 255;
+	basic_SDL_engi::Color color(255, 255, 255, 255);
 	//needs position, uv, and depth
 	_spriteBatch.draw(pos, uv, texture.id, 0.0f, color);
 

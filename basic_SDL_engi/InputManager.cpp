@@ -12,6 +12,14 @@ namespace basic_SDL_engi
 	{
 	}
 
+	void InputManager::update()
+	{
+		for (auto it = _keyMap.begin(); it != _keyMap.end(); it++)
+		{
+			_prevKeyMap[it->first] = it->second;
+		}
+	}
+
 	void InputManager::onPress(unsigned int keyID)
 	{
 		_keyMap[keyID] = true;
@@ -28,7 +36,7 @@ namespace basic_SDL_engi
 		_cursorCoords.y = y;
 	}
 
-	bool InputManager::keyPressed(unsigned int keyID)
+	bool InputManager::keyDown(unsigned int keyID)
 	{
 		auto it = _keyMap.find(keyID);
 		if (it != _keyMap.end())
@@ -41,4 +49,26 @@ namespace basic_SDL_engi
 		}
 	}
 
+	bool InputManager::keyPressed(unsigned int keyID)
+	{
+		bool isPressed;
+		if (keyDown(keyID) == true && wasKeyDown(keyID) == false)
+		{
+			return true;
+		}
+		return false;
+	}
+
+	bool InputManager::wasKeyDown(unsigned int keyID)
+	{
+		auto it = _prevKeyMap.find(keyID);
+		if (it != _prevKeyMap.end())
+		{
+			return it->second;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }

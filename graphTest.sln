@@ -10,6 +10,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "graphTest", "graphTest\grap
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "basic_SDL_engi", "basic_SDL_engi\basic_SDL_engi.vcxproj", "{A06D7AF0-D7BC-4FCC-A274-4E1AE645B461}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "runnerGame", "runnerGame\runnerGame.vcxproj", "{C4CCF681-6728-475E-93AC-E6E96B33C42A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -24,6 +26,10 @@ Global
 		{A06D7AF0-D7BC-4FCC-A274-4E1AE645B461}.Debug|Win32.Build.0 = Debug|Win32
 		{A06D7AF0-D7BC-4FCC-A274-4E1AE645B461}.Release|Win32.ActiveCfg = Release|Win32
 		{A06D7AF0-D7BC-4FCC-A274-4E1AE645B461}.Release|Win32.Build.0 = Release|Win32
+		{C4CCF681-6728-475E-93AC-E6E96B33C42A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C4CCF681-6728-475E-93AC-E6E96B33C42A}.Debug|Win32.Build.0 = Debug|Win32
+		{C4CCF681-6728-475E-93AC-E6E96B33C42A}.Release|Win32.ActiveCfg = Release|Win32
+		{C4CCF681-6728-475E-93AC-E6E96B33C42A}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
