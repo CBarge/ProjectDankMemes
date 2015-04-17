@@ -89,11 +89,13 @@
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SFX.cpp" />
+    <ClCompile Include="Music.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Agent.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Chaser.h" />
+    <ClInclude Include="Music.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Player.h" />
