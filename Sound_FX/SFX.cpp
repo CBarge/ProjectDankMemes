@@ -1,9 +1,8 @@
 // include relevant SDL dependecies and C dependencies
-#include "../deps/include/SDL/SDL.h"
-#include "../deps/include/SDL/SDL_mixer.h"
 #include <stdio.h>
 #include <string>
 #include <vector>
+#include <SDL/SDL.h>
 #include <SDL/SDL_mixer.h>
 
 // include class definition file
