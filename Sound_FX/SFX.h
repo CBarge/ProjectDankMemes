@@ -5,18 +5,15 @@
 
 class SFX {
 	public:
-		// constructor method, which inits all sound effects 
-		SFX();
-		// destructor
-		~SFX();
-
-		void init()
-
+		//inits all sound effects 
+		void init();
+		//plays sound at index of _sounds to be called in MainGame
 		void playSound(int index);
 
-		// functions to initialize the FX and close the interface once done
-		void closeFX();
+		// close the interface once done
+		void clearFX();
 	private:
+		//code to actually play the sound
 		void play(Mix_Chunk* sound);
 
 		std::vector<Mix_Chunk*> _sounds;
