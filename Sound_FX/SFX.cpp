@@ -64,92 +64,92 @@ void SFX::SFX() {
         printf("Mixer error: %s\n", Mix_GetError());
     }
 
-    m_booing = Mix_LoadWAV("applause.wav");
+    m_booing = Mix_LoadWAV("booing.wav");
     if (m_booing == NULL) {
         printf("Mixer error: %s\n", Mix_GetError());
     }
 
-    m_arc = Mix_LoadWAV("applause.wav");
+    m_arc = Mix_LoadWAV("arc.wav");
     if (m_arc == NULL) {
         printf("Mixer error: %s\n", Mix_GetError());
     }
 
-    m_bubble = Mix_LoadWAV("applause.wav");
+    m_bubble = Mix_LoadWAV("bubble.wav");
     if (m_bubble == NULL) {
         printf("Mixer error: %s\n", Mix_GetError());
     }
 
-    m_burning = Mix_LoadWAV("applause.wav");
+    m_burning = Mix_LoadWAV("burning.wav");
     if (m_burning == NULL) {
         printf("Mixer error: %s\n", Mix_GetError());
     }
 
-    m_earcing = Mix_LoadWAV("applause.wav");
+    m_earcing = Mix_LoadWAV("earcing.wav");
     if (m_earcing == NULL) {
         printf("Mixer error: %s\n", Mix_GetError());
     }
 
-    m_electric_shock = Mix_LoadWAV("applause.wav");
+    m_electric_shock = Mix_LoadWAV("electricshock.wav");
     if (m_electric_shock == NULL) {
         printf("Mixer error: %s\n", Mix_GetError());
     }
 
-    m_explosion = Mix_LoadWAV("applause.wav");
+    m_explosion = Mix_LoadWAV("explosion.wav");
     if (m_explosion == NULL) {
         printf("Mixer error: %s\n", Mix_GetError());
     }
 
-    m_fire = Mix_LoadWAV("applause.wav");
+    m_fire = Mix_LoadWAV("fire.wav");
     if (m_fire == NULL) {
         printf("Mixer error: %s\n", Mix_GetError());
     }
 
-    m_missile = Mix_LoadWAV("applause.wav");
+    m_missile = Mix_LoadWAV("missile.wav");
     if (m_missile == NULL) {
         printf("Mixer error: %s\n", Mix_GetError());
     }
 
-    m_change_setting = Mix_LoadWAV("applause.wav");
+    m_change_setting = Mix_LoadWAV("change_setting.wav");
     if (m_change_setting == NULL) {
         printf("Mixer error: %s\n", Mix_GetError());
     }
 
-    m_menu_navigate = Mix_LoadWAV("applause.wav");
+    m_menu_navigate = Mix_LoadWAV("menu_navigate.wav");
     if (m_menu_navigate == NULL) {
         printf("Mixer error: %s\n", Mix_GetError());
     }
 
-    m_heartbeat = Mix_LoadWAV("applause.wav");
+    m_heartbeat = Mix_LoadWAV("heartbeat.wav");
     if (m_heartbeat == NULL) {
         printf("Mixer error: %s\n", Mix_GetError());
     }
 
-    m_jump = Mix_LoadWAV("applause.wav");
+    m_jump = Mix_LoadWAV("jump.wav");
     if (m_jump == NULL) {
         printf("Mixer error: %s\n", Mix_GetError());
     }
 
-    m_death_scream = Mix_LoadWAV("applause.wav");
+    m_death_scream = Mix_LoadWAV("death_scream.wav");
     if (m_death_scream == NULL) {
         printf("Mixer error: %s\n", Mix_GetError());
     }
 
-    m_punch = Mix_LoadWAV("applause.wav");
+    m_punch = Mix_LoadWAV("punch.wav");
     if (m_punch == NULL) {
         printf("Mixer error: %s\n", Mix_GetError());
     }
 
-    m_wind = Mix_LoadWAV("applause.wav");
+    m_wind = Mix_LoadWAV("wind.wav");
     if (m_wind == NULL) {
         printf("Mixer error: %s\n", Mix_GetError());
     }
 
-    m_thunderstorm = Mix_LoadWAV("applause.wav");
+    m_thunderstorm = Mix_LoadWAV("thunderstorm.wav");
     if (m_thunderstorm == NULL) {
         printf("Mixer error: %s\n", Mix_GetError());
     }
 
-    m_rain = Mix_LoadWAV("applause.wav");
+    m_rain = Mix_LoadWAV("rain.wav");
     if (m_rain == NULL) {
         printf("Mixer error: %s\n", Mix_GetError());
     }
