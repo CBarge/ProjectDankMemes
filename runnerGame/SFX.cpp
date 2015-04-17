@@ -16,16 +16,16 @@ void SFX::init()
 	_sounds[0] = Mix_LoadWAV("applause.wav");
 	_sounds[1] = Mix_LoadWAV("booing.wav");
 	//obstacle sfx
-	_sounds[2] = Mix_LoadWAV("m_arc.wav");
-	_sounds[3] = Mix_LoadWAV("m_bubble");
-	_sounds[4] = Mix_LoadWAV("m_earcing.wav"); //check this one
+	_sounds[2] = Mix_LoadWAV("arc.wav");
+	_sounds[3] = Mix_LoadWAV("bubble.wav");
+	_sounds[4] = Mix_LoadWAV("earcing.wav"); //check this one
 	//sfx for menu navigation
-	_sounds[5] = Mix_LoadWAV("m_change_setting.wav"); //remove if settings aren't finished
-	_sounds[6] = Mix_LoadWAV("m_menu_navigate.wav");
+	_sounds[5] = Mix_LoadWAV("change_setting.wav"); //remove if settings aren't finished
+	_sounds[6] = Mix_LoadWAV("menu_navigate.wav");
 	//player sfx
-	_sounds[7] = Mix_LoadWAV("m_heartbeat.wav");
-	_sounds[8] = Mix_LoadWAV("m_jump.wav");
-	_sounds[9] = Mix_LoadWAV("m_death_scream.wav"); //check this one
+	_sounds[7] = Mix_LoadWAV("heartbeat.wav");
+	_sounds[8] = Mix_LoadWAV("jump.wav");
+	_sounds[9] = Mix_LoadWAV("death_scream.wav"); //check this one
 
 	
 	for (int i = 0; i < _sounds.size(); i++)
@@ -33,7 +33,7 @@ void SFX::init()
 		if (_sounds[i] == NULL)
 		{
 			//checks to make sure each one loaded correctly
-			printf("Mixer error for "+i+" : %s\n", Mix_GetError());
+			printf("Mixer error for " + i + " : %s\n", Mix_GetError());
 			
 		}
 	}
