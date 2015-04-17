@@ -39,6 +39,10 @@ MainGame::~MainGame() {
 		delete _chasers[i];
 	}
 	delete _player;
+	//clearing music and sfx
+	Music::clearMusic();
+	Music::closePlayer();
+	SFX::clearFX();
 }
 
 void MainGame::run() {
@@ -82,7 +86,7 @@ void MainGame::initLevel(int numLevel) {
 	if (numLevel == 0)
 	{
 		// Level 0
-		//glClearColor(0.0f, 0.0f, 0.0f, 0.0f); //main menu background is black
+		glClearColor(0.0f, 0.0f, 0.0f, 0.0f); //main menu background is black
 		_currentLevel = 0;
 		_numCurrentLevel = 0;
 	}
@@ -151,6 +155,7 @@ void MainGame::gameLoop() {
 		if (_gameState == GameState::MAINMENU)
 		{
 			initLevel(0);
+			Music::playMusic(1);
 			_startButton = new Button;
 			_startButton->init(0, -50.0f, 0.0f, 100.0f, 50.0f, &_inputManager, &_camera);
 			_exitButton = new Button;
@@ -174,14 +179,14 @@ void MainGame::gameLoop() {
 
 				if (_startButton->checkPressed())
 				{
-					//SFX::playSound(6);
+					SFX::playSound(6);
 					_nextState = GameState::PLAYING;
 					_currentLevel = 1;
 					std::cout << "Butts\n";
 				}
 				else if (_exitButton->checkPressed())
 				{
-					//SFX::playSound(6);
+					SFX::playSound(6);
 					std::cout << "Barf\n";
 					_nextState = GameState::EXIT;
 					_loopState = GameState::DEAD;
@@ -206,6 +211,7 @@ void MainGame::gameLoop() {
 		// Main Game loop
 		else if (_gameState == GameState::PLAYING)
 		{
+			Music::playMusic(0);
 			initLevel(1);
 			while (_gameState == GameState::PLAYING) {
 				fpsLimiter.begin();
@@ -247,7 +253,8 @@ void MainGame::gameLoop() {
 		else if (_gameState == GameState::LOSER)
 		{
 			while (_gameState == GameState::LOSER) {
-				//SFX::playSound(1);
+				Music::stopMusic(1); //stop music first or play fail sound while music still playing?
+				SFX::playSound(0);
 				_nextState = GameState::MAINMENU;
 				_gameState = _nextState;
 			}
@@ -317,6 +324,8 @@ void MainGame::checkWin() {
 	}
 	else if (_player->win())
 	{
+		SFX::playSound(0);
+
 		std::printf("Win...\nYou got %d points.\n",
 			_score);
 

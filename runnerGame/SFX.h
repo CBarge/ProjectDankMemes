@@ -8,13 +8,13 @@ class SFX {
 		//inits all sound effects 
 		void init();
 		//plays sound at index of _sounds to be called in MainGame
-		void playSound(int index);
+		static void playSound(int index);
 
 		// close the interface once done
-		void clearFX();
+		static void clearFX();
 	private:
 		//code to actually play the sound
-		void play(Mix_Chunk* sound);
+		static void play(Mix_Chunk* sound);
 
-		std::vector<Mix_Chunk*> _sounds;
+		static std::vector<Mix_Chunk*> _sounds;
 };

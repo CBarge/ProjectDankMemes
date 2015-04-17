@@ -8,16 +8,16 @@ public:
 	//inits all music 
 	void initi();
 	//plays music at index of _musics to be called in MainGame
-	void playMusic(int index);
+	static void playMusic(int index);
 	//stops music
-	void stopMusic(int index);
-	void closePlayer();
+	static void stopMusic(int index);
+	static void closePlayer();
 
 	// close the interface once done
-	void clearMusic();
+	static void clearMusic();
 private:
 	//code to actually play the sound
-	void play(Mix_Music* mMusic);
+	static void play(Mix_Music* mMusic);
 
 	static std::vector<Mix_Music*> _musics;
-}
+};
