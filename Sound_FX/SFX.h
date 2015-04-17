@@ -1,16 +1,23 @@
 #include "../deps/include/SDL/SDL.h"
 #include "../deps/include/SDL/SDL_mixer.h"
 
+#include <vector>
+
 class SFX {
-    private:
+	public:
+		// constructor method, which inits all sound effects 
+		SFX();
+		// destructor
+		~SFX();
 
-    public:
-        // constructor method, which inits all sound effects 
-        SFX();
+		void init()
 
-        // destructor
-        ~SFX();
+		void playSound(int index);
 
-        // functions to initialize the FX and close the interface once done
-        void closeFX();
+		// functions to initialize the FX and close the interface once done
+		void closeFX();
+	private:
+		void play(Mix_Chunk* sound);
+
+		std::vector<Mix_Chunk*> _sounds;
 };

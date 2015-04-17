@@ -160,6 +160,28 @@ void SFX::~SFX() {
 
 }
 
+void SFX::init()
+{
+	//keep doing this for all of them
+	_sounds[0] = Mix_LoadWAV("applause.wav");
+	_sounds[1] = Mix_LoadWAV("booing.wav");
+
+	
+	for (int i = 0; i < _sounds.size(); i++)
+	{
+		if (_sounds[i] == NULL)
+		{
+			printf("Mixer error: %s\n", Mix_GetError());
+			//or whatever error you need, ideally lethalError from the appropriate class
+		}
+	}
+}
+
+void SFX::playSound(int index)
+{
+	play(_sounds[index]);
+}
+
 // clean up function for sound effects, to be called by the cleanup function of the main game
 void SFX::closeFX() {
     // free up all chunks of the sfx mix
@@ -192,4 +214,9 @@ void SFX::closeFX() {
 
     // quit the mixer (again, calling CloseAudio because all sfx are WAV files, so no need for Mix_Quit)
     Mix_CloseAudio();
+}
+
+void play(Mix_Chunk* sound)
+{
+	//play function goes here, whatever you need to call to make it happen
 }
