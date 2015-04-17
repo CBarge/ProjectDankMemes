@@ -32,6 +32,11 @@ Level::Level(const std::string& fileName)
 
 	basic_SDL_engi::Color whiteColor(255, 255, 255, 255);
 
+	static int castle = basic_SDL_engi::ResourceManager::getTexture("Textures/Tiles/castle.png").id;
+	static int castleRound = basic_SDL_engi::ResourceManager::getTexture("Textures/Tiles/castleCenter_rounded.png").id;
+	static int spikes = basic_SDL_engi::ResourceManager::getTexture("Textures/Items/spikes.png").id;
+	static int spring = basic_SDL_engi::ResourceManager::getTexture("Textures/Items/springboardUp.png").id;
+
 	// Render all the tiles
 	for (int y = 0; y < _levelData.size(); y++) {
 		for (int x = 0; x < _levelData[y].size(); x++) {
@@ -44,19 +49,19 @@ Level::Level(const std::string& fileName)
 			// Process the tile
 			switch (tile) {
 			case 'G':
-				_spriteBatch.draw(destRect, uvRect, basic_SDL_engi::ResourceManager::getTexture("Textures/Tiles/castle.png").id, 0.0f, whiteColor);
+				_spriteBatch.draw(destRect, uvRect, castle, 0.0f, whiteColor);
 				break;
 			case 'E':
-				_spriteBatch.draw(destRect, uvRect, basic_SDL_engi::ResourceManager::getTexture("Textures/Tiles/castleCenter_rounded.png").id, 0.0f, whiteColor);
+				_spriteBatch.draw(destRect, uvRect, castleRound, 0.0f, whiteColor);
 				break;
 			case 'S':
-				_spriteBatch.draw(destRect, uvRect, basic_SDL_engi::ResourceManager::getTexture("Textures/Items/spikes.png").id, 0.0f, whiteColor);
+				_spriteBatch.draw(destRect, uvRect, spikes, 0.0f, whiteColor);
 				break;
 			case 'P':
-				_spriteBatch.draw(destRect, uvRect, basic_SDL_engi::ResourceManager::getTexture("Textures/Items/springboardUp.png").id, 0.0f, whiteColor);
+				_spriteBatch.draw(destRect, uvRect, spring, 0.0f, whiteColor);
 				break;
 			case 'H':
-				_spriteBatch.draw(destRect, uvRect, basic_SDL_engi::ResourceManager::getTexture("Textures/Tiles/castleCenter_rounded.png").id, 0.0f, whiteColor);
+				_spriteBatch.draw(destRect, uvRect, castleRound, 0.0f, whiteColor);
 				break;
 			case '@':
 				_levelData[y][x] = '.';

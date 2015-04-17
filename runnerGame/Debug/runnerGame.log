@@ -1,24 +1,12 @@
-﻿Build started 4/17/2015 1:39:51 PM.
+﻿Build started 4/17/2015 1:52:41 PM.
      1>Project "D:\ProjectDankMemes\runnerGame\runnerGame.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt MainGame.cpp main.cpp
-         MainGame.cpp
-     1>d:\projectdankmemes\runnergame\maingame.cpp(34): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\projectdankmemes\runnergame\maingame.cpp(38): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\projectdankmemes\runnergame\maingame.cpp(99): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\projectdankmemes\runnergame\maingame.cpp(115): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\projectdankmemes\runnergame\maingame.cpp(145): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
-     1>d:\projectdankmemes\runnergame\maingame.cpp(160): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
-     1>d:\projectdankmemes\runnergame\maingame.cpp(210): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
-     1>d:\projectdankmemes\runnergame\maingame.cpp(277): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\projectdankmemes\runnergame\maingame.cpp(283): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\projectdankmemes\runnergame\maingame.cpp(286): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\projectdankmemes\runnergame\maingame.cpp(297): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
-     1>d:\projectdankmemes\runnergame\maingame.cpp(335): warning C4244: 'argument' : conversion from 'Sint32' to 'float', possible loss of data
-     1>d:\projectdankmemes\runnergame\maingame.cpp(414): warning C4018: '<' : signed/unsigned mismatch
-         Generating Code...
-         Skipping... (no relevant changes detected)
-         main.cpp
+         C:\Program Files (x86)\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Level.cpp
+         Level.cpp
+     1>d:\projectdankmemes\runnergame\level.cpp(41): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\projectdankmemes\runnergame\level.cpp(42): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\projectdankmemes\runnergame\level.cpp(68): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
+     1>d:\projectdankmemes\runnergame\level.cpp(69): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
        Link:
          C:\Program Files (x86)\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\ProjectDankMemes\Debug\runnerGame.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib opengl32.lib glew32.lib basic_SDL_engi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\ProjectDankMemes\Debug\runnerGame.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\ProjectDankMemes\Debug\runnerGame.lib" /MACHINE:X86 Debug\runnerGame.res
          Debug\Agent.obj
@@ -28,9 +16,23 @@
          Debug\main.obj
          Debug\MainGame.obj
          Debug\Player.obj
+     1>MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
+     1>basic_SDL_engi.lib(basic_SDL_engi.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(basic_SDL_engi.obj)' or at 'D:\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+     1>basic_SDL_engi.lib(Camera2D.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(Camera2D.obj)' or at 'D:\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+     1>basic_SDL_engi.lib(Errors.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(Errors.obj)' or at 'D:\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+     1>basic_SDL_engi.lib(GLSLProgram.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(GLSLProgram.obj)' or at 'D:\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+     1>basic_SDL_engi.lib(ImageLoader.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(ImageLoader.obj)' or at 'D:\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+     1>basic_SDL_engi.lib(InputManager.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(InputManager.obj)' or at 'D:\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+     1>basic_SDL_engi.lib(IOManager.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(IOManager.obj)' or at 'D:\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+     1>basic_SDL_engi.lib(picoPNG.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(picoPNG.obj)' or at 'D:\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+     1>basic_SDL_engi.lib(ResourceManager.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(ResourceManager.obj)' or at 'D:\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+     1>basic_SDL_engi.lib(SpriteBatch.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(SpriteBatch.obj)' or at 'D:\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+     1>basic_SDL_engi.lib(TextureCache.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(TextureCache.obj)' or at 'D:\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+     1>basic_SDL_engi.lib(Time.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(Time.obj)' or at 'D:\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+     1>basic_SDL_engi.lib(Window.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(Window.obj)' or at 'D:\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
          runnerGame.vcxproj -> D:\ProjectDankMemes\Debug\runnerGame.exe
      1>Done Building Project "D:\ProjectDankMemes\runnerGame\runnerGame.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.32
+Time Elapsed 00:00:01.31
