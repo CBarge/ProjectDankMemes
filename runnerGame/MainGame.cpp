@@ -82,6 +82,7 @@ void MainGame::initLevel(int numLevel) {
 	if (numLevel == 0)
 	{
 		// Level 0
+		//glClearColor(0.0f, 0.0f, 0.0f, 0.0f); //main menu background is black
 		_currentLevel = 0;
 		_numCurrentLevel = 0;
 	}
@@ -173,12 +174,14 @@ void MainGame::gameLoop() {
 
 				if (_startButton->checkPressed())
 				{
+					//SFX::playSound(6);
 					_nextState = GameState::PLAYING;
 					_currentLevel = 1;
 					std::cout << "Butts\n";
 				}
 				else if (_exitButton->checkPressed())
 				{
+					//SFX::playSound(6);
 					std::cout << "Barf\n";
 					_nextState = GameState::EXIT;
 					_loopState = GameState::DEAD;
@@ -244,6 +247,7 @@ void MainGame::gameLoop() {
 		else if (_gameState == GameState::LOSER)
 		{
 			while (_gameState == GameState::LOSER) {
+				//SFX::playSound(1);
 				_nextState = GameState::MAINMENU;
 				_gameState = _nextState;
 			}

@@ -10,6 +10,7 @@
 #include "Level.h"
 #include "Chaser.h"
 #include "Button.h"
+#include "SFX.h"
 
 //for finding out what is going on, man
 enum class GameState{ PLAYING, EXIT, MAINMENU, SETTINGS, NEXTLEVEL, LOSER, LEADERBOARD, CREDITS, LOOPING, DEAD };
