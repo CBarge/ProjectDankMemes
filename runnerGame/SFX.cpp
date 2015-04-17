@@ -33,8 +33,7 @@ void SFX::init()
 		if (_sounds[i] == NULL)
 		{
 			//checks to make sure each one loaded correctly
-			printf("Mixer error for " + i + " : %s\n", Mix_GetError());
-			
+			printf("Mixer error for %d: %s\n", i, Mix_GetError());			
 		}
 	}
 }
@@ -57,12 +56,12 @@ void SFX::clearFX() {
     
 }
 
-void play(Mix_Chunk* sound)
+void SFX::play(Mix_Chunk* sound)
 {
 	//create mixer, defaults are freq of 22050 and 16bit
 	Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 4096);
 	//check for error
-	if (Mix_PlayChannel(-1, sample, 0) == -1)
+	if (Mix_PlayChannel(-1, sound, 0) == -1)
 	{
 		printf("Mix_PlayChannel: %s\n", Mix_GetError());
 	}
