@@ -29,6 +29,8 @@ private:
 	//initializes stuff like the engine, window, shaders, etc
 	void initSystems();
 
+	void initLevels();
+
 	//creation of the level environment
 	void initLevel(int numLevel);
 

@@ -44,6 +44,8 @@ MainGame::~MainGame() {
 void MainGame::run() {
 	//for actually creating junk
 	initSystems();
+	//getting all level data
+	initLevels();
 	//for actually creating the level
 	initLevel(0);
 	//for actually doing anything in the game
@@ -67,12 +69,16 @@ void MainGame::initSystems() {
 	_camera.init(_screenWidth, _screenHeight);
 }
 
-void MainGame::initLevel(int numLevel) {
-	//level environment, could make more levels under this structure?
-	//zeroth level, nothing happens
+void MainGame::initLevels()
+{
 	_levels.push_back(new Level("Levels/level0.txt"));
 	_levels.push_back(new Level("Levels/level1.txt"));
 	_levels.push_back(new Level("Levels/level2.txt"));
+}
+
+void MainGame::initLevel(int numLevel) {
+	//level environment, could make more levels under this structure?
+	//zeroth level, nothing happens
 	if (numLevel == 0)
 	{
 		// Level 0

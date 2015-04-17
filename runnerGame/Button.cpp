@@ -31,7 +31,7 @@ bool Button::checkPressed()
 	{
 		glm::vec2 cursorCoords = _inputManager->getCursorCoords();
 		cursorCoords = _camera->convSCoordsToWCoords(cursorCoords);
-		if ((cursorCoords.x >= _position.x && cursorCoords.x <= (_position.x + _width)) ||
+		if ((cursorCoords.x >= _position.x && cursorCoords.x <= (_position.x + _width)) &&
 			(cursorCoords.y >= _position.y && cursorCoords.y <= (_position.y + _height)))
 		{
 			std::cout << "Fuck\n";
