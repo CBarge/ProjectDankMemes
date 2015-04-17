@@ -11,17 +11,20 @@
 #include <ctime>
 
 const float OBSTACLE_SPEED = 5.0f;
-const float PLAYER_SPEED = 11.0f;
+const float PLAYER_SPEED = 10.1f;
 const float CHASER_SPEED = 10.0f;
 
 MainGame::MainGame() :
 	_screenWidth(1024),
 	_screenHeight(768),
-	_gameState(GameState::PLAYING),
+	_gameState(GameState::MAINMENU),
+	_loopState(GameState::LOOPING),
+	_nextState(GameState::MAINMENU),
 	_fps(0),
 	_player(nullptr),
 	_score(0),
-	_timeSurvived(0.0f)
+	_timeSurvived(0.0f),
+	_numCurrentLevel(0)
 {
 	//we really shouldn't need anything here
 }
@@ -42,7 +45,7 @@ void MainGame::run() {
 	//for actually creating junk
 	initSystems();
 	//for actually creating the level
-	initLevel();
+	initLevel(0);
 	//for actually doing anything in the game
 	gameLoop();
 }
@@ -53,30 +56,63 @@ void MainGame::initSystems() {
 	//creating the window TO THE FUTURE
 	_window.createWin("Runner Game", _screenWidth, _screenHeight, 0);
 	//background color, can change?
-	glClearColor(0.7f, 0.7f, 0.7f, 1.0f);
+	glClearColor(0.3f, 0.1f, 0.1f, 1.0f);
 	//gettin those shaders so youse can sees the junk
 	initShaders();
 	//gettin those sprites so there's actually junk to see
 	_agentSpriteBatch.init();
+	//for those coolio doolio buttons, mang
+	_buttonSpriteBatch.init();
 	//camera, focused on center of screen.
 	_camera.init(_screenWidth, _screenHeight);
 }
 
-void MainGame::initLevel() {
+void MainGame::initLevel(int numLevel) {
 	//level environment, could make more levels under this structure?
-	// Level 1
+	//zeroth level, nothing happens
+	_levels.push_back(new Level("Levels/level0.txt"));
 	_levels.push_back(new Level("Levels/level1.txt"));
-	_currentLevel = 0;
-
-	_player = new Player();
-	_player->init(PLAYER_SPEED, _levels[_currentLevel]->getStartPlayerPos(), &_inputManager, &_camera);
-
-	const std::vector<glm::vec2>& chaserPositions = _levels[_currentLevel]->getChaserPositions();
-	for (int i = 0; i < chaserPositions.size(); i++)
+	_levels.push_back(new Level("Levels/level2.txt"));
+	if (numLevel == 0)
 	{
-		_chasers.push_back(new Chaser);
-		_chasers.back()->init(CHASER_SPEED, chaserPositions[i]);
+		// Level 0
+		_currentLevel = 0;
+		_numCurrentLevel = 0;
 	}
+	else if (numLevel == 1)
+	{
+		// Level 1
+		_currentLevel = 1;
+		_numCurrentLevel = 1;
+
+		_player = new Player();
+		_player->init(PLAYER_SPEED, _levels[1]->getStartPlayerPos(), &_inputManager, &_camera);
+
+		const std::vector<glm::vec2>& chaserPositions = _levels[_currentLevel]->getChaserPositions();
+		_chasers.clear();
+		for (int i = 0; i < chaserPositions.size(); i++)
+		{
+			_chasers.push_back(new Chaser);
+			_chasers.back()->init(CHASER_SPEED, chaserPositions[i]);
+		}
+	}
+	else if (numLevel == 2)
+	{
+		// Level 2
+		_currentLevel = 2;
+		_numCurrentLevel = 2;
+
+		_player = new Player();
+		_player->init(PLAYER_SPEED, _levels[2]->getStartPlayerPos(), &_inputManager, &_camera);
+
+		const std::vector<glm::vec2>& chaserPositions = _levels[_currentLevel]->getChaserPositions();
+		for (int i = 0; i < chaserPositions.size(); i++)
+		{
+			_chasers.push_back(new Chaser);
+			_chasers.back()->init(CHASER_SPEED, chaserPositions[i]);
+		}
+	}
+
 }
 
 void MainGame::initShaders() {
@@ -102,39 +138,128 @@ void MainGame::gameLoop() {
 
 	float prevTicks = SDL_GetTicks();
 
-	// Main loop
-	while (_gameState == GameState::PLAYING) {
-		fpsLimiter.begin();
-
-		float newTicks = SDL_GetTicks();
-		float frameTime = SDL_GetTicks() - prevTicks;
-		prevTicks = newTicks;
-		float totalDeltaTime = frameTime / DESIRED_FRAMETIME;
-
-		checkWin();
-
-		processInput();
-
-		int i = 0;
-
-		while (totalDeltaTime > 0.0f && i < MAX_PHYSICS_STEPS)
+	while (_loopState == GameState::LOOPING)
+	{
+		//Main Menu Loop
+		if (_gameState == GameState::MAINMENU)
 		{
-			float deltaTime = std::min(totalDeltaTime, MAX_DELTA_TIME);
-			updateAgents(deltaTime);
-			totalDeltaTime -= deltaTime;
-			i++;
+			initLevel(0);
+			_startButton = new Button;
+			_startButton->init(0, -50.0f, 0.0f, 100.0f, 50.0f, &_inputManager, &_camera);
+			_exitButton = new Button;
+			_exitButton->init(1, -50.0f, -100.0f, 100.0f, 50.0f, &_inputManager, &_camera);
+			while (_gameState == GameState::MAINMENU) {
+				fpsLimiter.begin();
+
+				float newTicks = SDL_GetTicks();
+				float frameTime = SDL_GetTicks() - prevTicks;
+				prevTicks = newTicks;
+				float totalDeltaTime = frameTime / DESIRED_FRAMETIME;
+
+				processInput();
+
+				glm::vec2 origin = glm::vec2(0.0f, 0.0f);
+
+				_camera.setPosition(origin);
+
+				_camera.update();
+
+
+				if (_startButton->checkPressed())
+				{
+					_nextState = GameState::PLAYING;
+					_currentLevel = 1;
+					std::cout << "Butts\n";
+				}
+				else if (_exitButton->checkPressed())
+				{
+					std::cout << "Barf\n";
+					_nextState = GameState::EXIT;
+					_loopState = GameState::DEAD;
+				}
+
+				_inputManager.update();
+
+				drawGame();
+				_gameState = _nextState;
+				_fps = fpsLimiter.end();
+			}
 		}
 
-		_camera.setPosition(_player->getPosition());
+		//Settings Menu Loop
+		else if (_gameState == GameState::SETTINGS)
+		{
+			while (_gameState == GameState::SETTINGS) {
 
-		_camera.update();
+			}
+		}
 
-		_inputManager.update();
+		// Main Game loop
+		else if (_gameState == GameState::PLAYING)
+		{
+			initLevel(1);
+			while (_gameState == GameState::PLAYING) {
+				fpsLimiter.begin();
 
-		drawGame();
+				float newTicks = SDL_GetTicks();
+				float frameTime = SDL_GetTicks() - prevTicks;
+				prevTicks = newTicks;
+				float totalDeltaTime = frameTime / DESIRED_FRAMETIME;
 
-		_fps = fpsLimiter.end();
+				checkWin();
+
+				processInput();
+
+				int i = 0;
+
+				while (totalDeltaTime > 0.0f && i < MAX_PHYSICS_STEPS)
+				{
+					float deltaTime = std::min(totalDeltaTime, MAX_DELTA_TIME);
+					updateAgents(deltaTime);
+					totalDeltaTime -= deltaTime;
+					i++;
+				}
+
+				_camera.setPosition(_player->getPosition());
+
+				_camera.update();
+
+				_inputManager.update();
+
+				drawGame();
+
+				_gameState = _nextState;
+
+				_fps = fpsLimiter.end();
+			}
+		}
+
+		//Losing Screen Loop
+		else if (_gameState == GameState::LOSER)
+		{
+			while (_gameState == GameState::LOSER) {
+				_nextState = GameState::MAINMENU;
+				_gameState = _nextState;
+			}
+		}
+
+		//Leaderboard Loop
+		else if (_gameState == GameState::LEADERBOARD)
+		{
+			while (_gameState == GameState::LEADERBOARD) {
+
+			}
+		}
+
+		//Credits Loop
+		else if (_gameState == GameState::CREDITS)
+		{
+			while (_gameState == GameState::CREDITS) {
+
+			}
+		}
 	}
+	
 }
 
 void MainGame::updateAgents(float deltaTime) {
@@ -148,7 +273,7 @@ void MainGame::updateAgents(float deltaTime) {
 		_chasers[i]->update(_levels[_currentLevel]->getLevelData(), _player, _chasers, deltaTime);
 	}
 
-	// Update Zombie collisions
+	// Update chasers collisions
 	for (int i = 0; i < _chasers.size(); i++)
 	{
 		// Collide with other zombies
@@ -164,7 +289,6 @@ void MainGame::updateAgents(float deltaTime) {
 	}
 
 	_score += floor(deltaTime);
-	// Dont forget to update zombies
 }
 
 void MainGame::checkWin() {
@@ -177,17 +301,16 @@ void MainGame::checkWin() {
 		// Print failure message
 		std::printf("Loser!\nYou got %d points.\n",
 			_score);
-
+		_nextState = GameState::LOSER;
 		// Easy way to end the game :P
-		basic_SDL_engi::lethalError("");
+		//basic_SDL_engi::lethalError("");
 	}
 	else if (_player->win())
 	{
-		std::printf("Loser!\nYou got %d points.\n",
+		std::printf("Win...\nYou got %d points.\n",
 			_score);
 
-		// Easy way to end the game :P
-		basic_SDL_engi::lethalError("");
+		_currentLevel++;
 	}
 }
 
@@ -199,6 +322,7 @@ void MainGame::processInput() {
 	while (SDL_PollEvent(&evnt)) {
 		switch (evnt.type) {
 		case SDL_QUIT:
+			_loopState = GameState::DEAD;
 			_gameState = GameState::EXIT;
 			break;
 		case SDL_MOUSEMOTION:
@@ -218,11 +342,11 @@ void MainGame::processInput() {
 			break;
 		}
 	}
-	if (_inputManager.keyPressed(SDLK_q))
+	if (_inputManager.keyDown(SDLK_q))
 	{
 		_camera.setScale(_camera.getScale() - SCALE_SPEED);
 	}
-	if (_inputManager.keyPressed(SDLK_e))
+	if (_inputManager.keyDown(SDLK_e))
 	{
 		_camera.setScale(_camera.getScale() + SCALE_SPEED);
 	}
@@ -257,22 +381,40 @@ void MainGame::drawGame() {
 	//drawing the level
 	_levels[_currentLevel]->draw();
 
-	//start drawing the agents
-	_agentSpriteBatch.begin();
+	if (_gameState == GameState::MAINMENU)
+	{
+		//start drawing the agents
+		_buttonSpriteBatch.begin();
 
-	//player
-	_player->draw(_agentSpriteBatch);
+		_startButton->draw(_buttonSpriteBatch);
 
-	//chasers
-	for (int i = 0; i < _chasers.size(); i++) {
-		_chasers[i]->draw(_agentSpriteBatch);
+		_exitButton->draw(_buttonSpriteBatch);
+
+		// End spritebatch creation
+		_buttonSpriteBatch.end();
+
+		// Render to the screen
+		_buttonSpriteBatch.renderBatch();
 	}
+	else if (_gameState == GameState::PLAYING)
+	{
+		//start drawing the agents
+		_agentSpriteBatch.begin();
 
-	// End spritebatch creation
-	_agentSpriteBatch.end();
+		//player
+		_player->draw(_agentSpriteBatch);
 
-	// Render to the screen
-	_agentSpriteBatch.renderBatch();
+		//chasers
+		for (int i = 0; i < _chasers.size(); i++) {
+			_chasers[i]->draw(_agentSpriteBatch);
+		}
+
+		// End spritebatch creation
+		_agentSpriteBatch.end();
+
+		// Render to the screen
+		_agentSpriteBatch.renderBatch();
+	}
 
 	// Unbind the program
 	_textureProgram.unuse();

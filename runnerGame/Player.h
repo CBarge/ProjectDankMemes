@@ -29,6 +29,7 @@ private:
 	basic_SDL_engi::InputManager* _inputManager;
 	basic_SDL_engi::Camera2D* _camera;
 
+	glm::vec2 _lastPos;
 	glm::vec2 _direction;
 	int _frames;
 };

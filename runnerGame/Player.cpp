@@ -15,6 +15,7 @@ void Player::init(float speed, glm::vec2 pos, basic_SDL_engi::InputManager* inpu
 	_yMomentum = 0.0f;
 	_speed = speed;
 	_position = pos;
+	_lastPos = _position;
 	_inputManager = inputManager;
 	_camera = camera;
 	_color.r = 255;
@@ -27,7 +28,7 @@ void Player::init(float speed, glm::vec2 pos, basic_SDL_engi::InputManager* inpu
 
 void Player::update(const std::vector<std::string>& levelData, Player* player, std::vector<Chaser*>& chasers, float deltaTime)
 {
-	if (_inputManager->keyDown(SDLK_w)) {
+	if (_inputManager->keyPressed(SDLK_w)) {
 		if (_grounded)
 			jump(15.0f);
 	}

@@ -179,7 +179,7 @@ void Agent::collideWithTile(glm::vec2 tilePos, char tileType)
 				// X collsion depth is smaller so we push in X direction
 				if (distVec.x < 0)
 				{
-					_position.x -= xDepth + 1.0f;
+					_position.x -= xDepth + 2.0f;
 				}
 				else
 				{
