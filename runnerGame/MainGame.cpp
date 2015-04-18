@@ -9,6 +9,7 @@
 #include <iostream>
 #include <random>
 #include <ctime>
+#include <string>
 
 const float OBSTACLE_SPEED = 5.0f;
 const float PLAYER_SPEED = 10.1f;
@@ -196,6 +197,7 @@ void MainGame::gameLoop() {
 				else if (_leaderButton->checkPressed())
 				{
 					SFX::playSound(6);
+
 					_nextState = GameState::LEADERBOARD;
 				}
 				_inputManager.update();
@@ -267,8 +269,20 @@ void MainGame::gameLoop() {
 		}
 
 		//New high score loop
-		else if (_gameState == GameState::HIGHSCORE){
+		else if (_gameState == GameState::HIGHSCORE)
+		{
+			std::string name = "";
+			_newName->charCount = 0; //resets charCount to 0
 			while (_gameState == GameState::HIGHSCORE){
+
+				processInput();
+				//enters loop to wait for 3 char input
+				while (_newName->charCount < 3 && _newName->getChar() != '1'){
+					name += _newName->getChar(); //appends to name
+				}
+				//need to save name to leaderboard file here by calling Leaderboard function, i'll do that
+				//once name is entered, changes to leaderboard screen
+				_nextState = GameState::LEADERBOARD;
 
 			}
 		}
