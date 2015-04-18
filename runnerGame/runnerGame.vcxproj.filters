@@ -42,6 +42,9 @@
     <ClCompile Include="Music.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CharInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h">
@@ -69,6 +72,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Music.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharInput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

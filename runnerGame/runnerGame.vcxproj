@@ -83,6 +83,7 @@
   <ItemGroup>
     <ClCompile Include="Agent.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="CharInput.cpp" />
     <ClCompile Include="Chaser.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
@@ -94,6 +95,7 @@
   <ItemGroup>
     <ClInclude Include="Agent.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="CharInput.h" />
     <ClInclude Include="Chaser.h" />
     <ClInclude Include="Music.h" />
     <ClInclude Include="Level.h" />
