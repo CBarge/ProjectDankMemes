@@ -14,7 +14,7 @@
 #include "Music.h"
 
 //for finding out what is going on, man
-enum class GameState{ PLAYING, EXIT, MAINMENU, SETTINGS, NEXTLEVEL, LOSER, LEADERBOARD, CREDITS, LOOPING, DEAD };
+enum class GameState{ PLAYING, EXIT, MAINMENU, SETTINGS, NEXTLEVEL, LOSER, HIGHSCORE, LEADERBOARD, CREDITS, LOOPING, DEAD };
 
 class MainGame
 {
@@ -76,6 +76,7 @@ private:
 	std::vector<Button*> _buttons;	//vector of buttons
 	Button* _startButton;
 	Button* _exitButton;
+	Button* _leaderButton;
 
 	int _score = 0;				//how far you've gotten
 	int _numCurrentLevel;

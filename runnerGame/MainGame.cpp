@@ -160,6 +160,8 @@ void MainGame::gameLoop() {
 			_startButton->init(0, -50.0f, 0.0f, 100.0f, 50.0f, &_inputManager, &_camera);
 			_exitButton = new Button;
 			_exitButton->init(1, -50.0f, -100.0f, 100.0f, 50.0f, &_inputManager, &_camera);
+			_leaderButton = new Button;
+			_leaderButton->init(6, -384.0f, -487.0f, 50.0f, 50.0f, &_inputManager, &_camera);
 			while (_gameState == GameState::MAINMENU) {
 				fpsLimiter.begin();
 
@@ -191,7 +193,11 @@ void MainGame::gameLoop() {
 					_nextState = GameState::EXIT;
 					_loopState = GameState::DEAD;
 				}
-
+				else if (_leaderButton->checkPressed())
+				{
+					SFX::playSound(6);
+					_nextState = GameState::LEADERBOARD;
+				}
 				_inputManager.update();
 
 				drawGame();
@@ -260,6 +266,12 @@ void MainGame::gameLoop() {
 			}
 		}
 
+		//New high score loop
+		else if (_gameState == GameState::HIGHSCORE){
+			while (_gameState == GameState::HIGHSCORE){
+
+			}
+		}
 		//Leaderboard Loop
 		else if (_gameState == GameState::LEADERBOARD)
 		{
