@@ -1,6 +1,5 @@
 #include "Player.h"
 #include <SDL/SDL.h>
-#include "SFX.h"
 
 Player::Player() : _frames(0)
 {
@@ -76,7 +75,6 @@ bool Player::win()
 
 void Player::jump(float speed)
 {
-	SFX::playSound(8);
 	_yMomentum = speed;
 	_grounded = false;
 }

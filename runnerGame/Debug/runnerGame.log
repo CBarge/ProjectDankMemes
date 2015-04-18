@@ -1,51 +1,7 @@
-﻿Build started 4/17/2015 5:42:30 PM.
-     1>Project "C:\Users\alcosta\Documents\GitHub\ProjectDankMemes\runnerGame\runnerGame.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Agent.cpp main.cpp MainGame.cpp SFX.cpp Music.cpp
-         Music.cpp
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\music.cpp(18): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\music.cpp(49): warning C4018: '<' : signed/unsigned mismatch
-         SFX.cpp
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\sfx.cpp(31): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\sfx.cpp(51): warning C4018: '<' : signed/unsigned mismatch
-         MainGame.cpp
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(34): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(38): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(100): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(116): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(146): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(162): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(215): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(284): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(290): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(293): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(304): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(344): warning C4244: 'argument' : conversion from 'Sint32' to 'float', possible loss of data
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(423): warning C4018: '<' : signed/unsigned mismatch
-         main.cpp
-         Agent.cpp
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\agent.cpp(45): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\agent.cpp(134): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\agent.cpp(136): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
-         Generating Code...
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\alcosta\Documents\GitHub\ProjectDankMemes\Debug\runnerGame.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib opengl32.lib glew32.lib basic_SDL_engi.lib SDL2_mixer.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\alcosta\Documents\GitHub\ProjectDankMemes\Debug\runnerGame.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\alcosta\Documents\GitHub\ProjectDankMemes\Debug\runnerGame.lib" /MACHINE:X86 Debug\runnerGame.res
-         Debug\Agent.obj
-         Debug\Button.obj
-         Debug\Chaser.obj
-         Debug\Level.obj
-         Debug\main.obj
-         Debug\MainGame.obj
-         Debug\Player.obj
-         Debug\SFX.obj
-         Debug\Music.obj
-         LINK : C:\Users\alcosta\Documents\GitHub\ProjectDankMemes\Debug\runnerGame.exe not found or not built by the last incremental link; performing full link
-     1>MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
-     1>SFX.obj : error LNK2001: unresolved external symbol "private: static class std::vector<struct Mix_Chunk *,class std::allocator<struct Mix_Chunk *> > SFX::_sounds" (?_sounds@SFX@@0V?$vector@PAUMix_Chunk@@V?$allocator@PAUMix_Chunk@@@std@@@std@@A)
-     1>Music.obj : error LNK2001: unresolved external symbol "private: static class std::vector<struct _Mix_Music *,class std::allocator<struct _Mix_Music *> > Music::_musics" (?_musics@Music@@0V?$vector@PAU_Mix_Music@@V?$allocator@PAU_Mix_Music@@@std@@@std@@A)
-     1>C:\Users\alcosta\Documents\GitHub\ProjectDankMemes\Debug\runnerGame.exe : fatal error LNK1120: 2 unresolved externals
-     1>Done Building Project "C:\Users\alcosta\Documents\GitHub\ProjectDankMemes\runnerGame\runnerGame.vcxproj" (Build target(s)) -- FAILED.
-
-Build FAILED.
-
-Time Elapsed 00:00:03.93
+﻿MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
+MainGame.obj : error LNK2019: unresolved external symbol "public: void __thiscall basic_SDL_engi::Music::play(int)" (?play@Music@basic_SDL_engi@@QAEXH@Z) referenced in function "public: void __thiscall MainGame::run(void)" (?run@MainGame@@QAEXXZ)
+MainGame.obj : error LNK2019: unresolved external symbol "public: __thiscall basic_SDL_engi::Audio::Audio(void)" (??0Audio@basic_SDL_engi@@QAE@XZ) referenced in function "public: __thiscall MainGame::MainGame(void)" (??0MainGame@@QAE@XZ)
+MainGame.obj : error LNK2019: unresolved external symbol "public: __thiscall basic_SDL_engi::Audio::~Audio(void)" (??1Audio@basic_SDL_engi@@QAE@XZ) referenced in function "public: __thiscall MainGame::~MainGame(void)" (??1MainGame@@QAE@XZ)
+MainGame.obj : error LNK2019: unresolved external symbol "public: void __thiscall basic_SDL_engi::Audio::init(void)" (?init@Audio@basic_SDL_engi@@QAEXXZ) referenced in function "private: void __thiscall MainGame::initSystems(void)" (?initSystems@MainGame@@AAEXXZ)
+MainGame.obj : error LNK2019: unresolved external symbol "public: class basic_SDL_engi::Music __thiscall basic_SDL_engi::Audio::loadMusic(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?loadMusic@Audio@basic_SDL_engi@@QAE?AVMusic@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "public: void __thiscall MainGame::run(void)" (?run@MainGame@@QAEXXZ)
+C:\Users\Tzeryushi\Desktop\progProject\ProjectDankMemes\Debug\runnerGame.exe : fatal error LNK1120: 5 unresolved externals

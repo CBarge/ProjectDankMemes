@@ -82,6 +82,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Audio.cpp" />
     <ClCompile Include="basic_SDL_engi.cpp" />
     <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="Errors.cpp" />
@@ -98,6 +99,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Audio.h" />
     <ClInclude Include="basic_SDL_engi.h" />
     <ClInclude Include="Camera2D.h" />
     <ClInclude Include="Errors.h" />

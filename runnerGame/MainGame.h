@@ -5,13 +5,12 @@
 #include <basic_SDL_engi/Camera2D.h>
 #include <basic_SDL_engi/InputManager.h>
 #include <basic_SDL_engi/SpriteBatch.h>
+#include <basic_SDL_engi/Audio.h>
 
 #include "Player.h"
 #include "Level.h"
 #include "Chaser.h"
 #include "Button.h"
-#include "SFX.h"
-#include "Music.h"
 
 //for finding out what is going on, man
 enum class GameState{ PLAYING, EXIT, MAINMENU, SETTINGS, NEXTLEVEL, LOSER, LEADERBOARD, CREDITS, LOOPING, DEAD };
@@ -80,6 +79,8 @@ private:
 	int _score = 0;				//how far you've gotten
 	int _numCurrentLevel;
 	float _timeSurvived;	//time passed? optional
+
+	basic_SDL_engi::Audio _audio;
 
 	GameState _gameState;
 	GameState _loopState;
