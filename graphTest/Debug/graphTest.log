@@ -1,3 +1,1 @@
-﻿  MainGame.cpp
-f:\documents\programming\visual studio 2013\projects\graphtest\graphtest\maingame.cpp(100): warning C4244: 'argument' : conversion from 'Sint32' to 'float', possible loss of data
-  graphTest.vcxproj -> F:\Documents\Programming\Visual Studio 2013\Projects\graphTest\Debug\graphTest.exe
+﻿

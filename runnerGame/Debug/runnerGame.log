@@ -1,7 +1,23 @@
-﻿MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
-MainGame.obj : error LNK2019: unresolved external symbol "public: void __thiscall basic_SDL_engi::Music::play(int)" (?play@Music@basic_SDL_engi@@QAEXH@Z) referenced in function "public: void __thiscall MainGame::run(void)" (?run@MainGame@@QAEXXZ)
-MainGame.obj : error LNK2019: unresolved external symbol "public: __thiscall basic_SDL_engi::Audio::Audio(void)" (??0Audio@basic_SDL_engi@@QAE@XZ) referenced in function "public: __thiscall MainGame::MainGame(void)" (??0MainGame@@QAE@XZ)
-MainGame.obj : error LNK2019: unresolved external symbol "public: __thiscall basic_SDL_engi::Audio::~Audio(void)" (??1Audio@basic_SDL_engi@@QAE@XZ) referenced in function "public: __thiscall MainGame::~MainGame(void)" (??1MainGame@@QAE@XZ)
-MainGame.obj : error LNK2019: unresolved external symbol "public: void __thiscall basic_SDL_engi::Audio::init(void)" (?init@Audio@basic_SDL_engi@@QAEXXZ) referenced in function "private: void __thiscall MainGame::initSystems(void)" (?initSystems@MainGame@@AAEXXZ)
-MainGame.obj : error LNK2019: unresolved external symbol "public: class basic_SDL_engi::Music __thiscall basic_SDL_engi::Audio::loadMusic(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?loadMusic@Audio@basic_SDL_engi@@QAE?AVMusic@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "public: void __thiscall MainGame::run(void)" (?run@MainGame@@QAEXXZ)
-C:\Users\Tzeryushi\Desktop\progProject\ProjectDankMemes\Debug\runnerGame.exe : fatal error LNK1120: 5 unresolved externals
+﻿  MainGame.cpp
+c:\users\tzeryushi\desktop\progproject\projectdankmemes\basic_sdl_engi\gltexture.h(8): warning C4099: 'basic_SDL_engi::GLTexture' : type name first seen using 'class' now seen using 'struct'
+          c:\users\tzeryushi\desktop\progproject\projectdankmemes\basic_sdl_engi\spritefont.h(36) : see declaration of 'basic_SDL_engi::GLTexture'
+c:\users\tzeryushi\desktop\progproject\projectdankmemes\runnergame\maingame.cpp(34): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\desktop\progproject\projectdankmemes\runnergame\maingame.cpp(38): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\desktop\progproject\projectdankmemes\runnergame\maingame.cpp(106): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\desktop\progproject\projectdankmemes\runnergame\maingame.cpp(122): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\desktop\progproject\projectdankmemes\runnergame\maingame.cpp(152): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+c:\users\tzeryushi\desktop\progproject\projectdankmemes\runnergame\maingame.cpp(169): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+c:\users\tzeryushi\desktop\progproject\projectdankmemes\runnergame\maingame.cpp(223): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+c:\users\tzeryushi\desktop\progproject\projectdankmemes\runnergame\maingame.cpp(316): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\desktop\progproject\projectdankmemes\runnergame\maingame.cpp(322): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\desktop\progproject\projectdankmemes\runnergame\maingame.cpp(325): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\desktop\progproject\projectdankmemes\runnergame\maingame.cpp(336): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
+c:\users\tzeryushi\desktop\progproject\projectdankmemes\runnergame\maingame.cpp(374): warning C4244: 'argument' : conversion from 'Sint32' to 'float', possible loss of data
+c:\users\tzeryushi\desktop\progproject\projectdankmemes\runnergame\maingame.cpp(453): warning C4018: '<' : signed/unsigned mismatch
+  Generating Code...
+  Compiling...
+  main.cpp
+c:\users\tzeryushi\desktop\progproject\projectdankmemes\basic_sdl_engi\gltexture.h(8): warning C4099: 'basic_SDL_engi::GLTexture' : type name first seen using 'class' now seen using 'struct'
+          c:\users\tzeryushi\desktop\progproject\projectdankmemes\basic_sdl_engi\spritefont.h(36) : see declaration of 'basic_SDL_engi::GLTexture'
+  Generating Code...
+  runnerGame.vcxproj -> C:\Users\Tzeryushi\Desktop\progProject\ProjectDankMemes\Debug\runnerGame.exe

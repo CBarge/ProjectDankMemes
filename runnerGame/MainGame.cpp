@@ -48,9 +48,6 @@ void MainGame::run() {
 	initLevels();
 	//for actually creating the level
 	initLevel(0);
-	//testing music
-	basic_SDL_engi::Music music = _audio.loadMusic("Music/MenuMusic.wav");
-	music.play(-1);
 	//for actually doing anything in the game
 	gameLoop();
 }
@@ -70,6 +67,10 @@ void MainGame::initSystems() {
 	_agentSpriteBatch.init();
 	//for those coolio doolio buttons, mang
 	_buttonSpriteBatch.init();
+	//gotta have them chunky funky sprites, yo
+	_hudSpriteBatch.init();
+	//initializing the spritefont
+	_spriteFont = new basic_SDL_engi::SpriteFont("Fonts/Iron & Brine.ttf", 32);
 	//camera, focused on center of screen.
 	_camera.init(_screenWidth, _screenHeight);
 }
@@ -155,6 +156,8 @@ void MainGame::gameLoop() {
 		//Main Menu Loop
 		if (_gameState == GameState::MAINMENU)
 		{
+			_music = _audio.loadMusic("Music/MenuMusic.wav");
+			_music.play(-1);
 			initLevel(0);
 			_startButton = new Button;
 			_startButton->init(0, -50.0f, 0.0f, 100.0f, 50.0f, &_inputManager, &_camera);
@@ -181,11 +184,13 @@ void MainGame::gameLoop() {
 				{
 					_nextState = GameState::PLAYING;
 					_currentLevel = 1;
-					std::cout << "Butts\n";
+					_sfx = _audio.loadSFX("Sound_FX/menu_navigate.wav");
+					_sfx.play(0);
 				}
 				else if (_exitButton->checkPressed())
 				{
-					std::cout << "Barf\n";
+					_sfx = _audio.loadSFX("Sound_FX/menu_navigate.wav");
+					_sfx.play(0);
 					_nextState = GameState::EXIT;
 					_loopState = GameState::DEAD;
 				}
@@ -209,6 +214,8 @@ void MainGame::gameLoop() {
 		// Main Game loop
 		else if (_gameState == GameState::PLAYING)
 		{
+			_music = _audio.loadMusic("Music/MusicGame.wav");
+			_music.play(-1);
 			initLevel(1);
 			while (_gameState == GameState::PLAYING) {
 				fpsLimiter.begin();
@@ -252,6 +259,32 @@ void MainGame::gameLoop() {
 			while (_gameState == GameState::LOSER) {
 				_nextState = GameState::MAINMENU;
 				_gameState = _nextState;
+			}
+		}
+
+		//New high score loop
+		else if (_gameState == GameState::HIGHSCORE)
+		{
+			_newName = new CharInput;
+			_newName->init(&_inputManager);
+			while (_gameState == GameState::HIGHSCORE)
+			{
+				processInput();
+				
+				if (!_newName->done())
+				{
+					_newName->getChar();
+				}
+				else
+				{
+					_nextState = GameState::LEADERBOARD;
+				}
+
+				std::cout << _newName->getName() << "\n";
+				//once name is entered, changes to leaderboard screen
+				_inputManager.update();
+
+				//needs ttf support, needs to draw, needs fps limiter
 			}
 		}
 
@@ -426,6 +459,8 @@ void MainGame::drawGame() {
 
 		// Render to the screen
 		_agentSpriteBatch.renderBatch();
+
+		drawHud();
 	}
 
 	// Unbind the program
@@ -433,4 +468,19 @@ void MainGame::drawGame() {
 
 	// Swap our buffer and draw everything to the screen!
 	_window.bufferSwap();
+}
+
+void MainGame::drawHud()
+{
+	char buffer[256];
+
+	_hudSpriteBatch.begin();
+
+	sprintf_s(buffer, "HEALTH %.0f", _player->health());
+
+	_spriteFont->draw(_hudSpriteBatch, buffer, glm::vec2(1000, 300), glm::vec2(4.0), 0.0f,
+		basic_SDL_engi::Color(255, 255, 255, 255), basic_SDL_engi::Justification::RIGHT);
+
+	_hudSpriteBatch.end();
+	_hudSpriteBatch.renderBatch();
 }

@@ -34,7 +34,6 @@ bool Button::checkPressed()
 		if ((cursorCoords.x >= _position.x && cursorCoords.x <= (_position.x + _width)) &&
 			(cursorCoords.y >= _position.y && cursorCoords.y <= (_position.y + _height)))
 		{
-			std::cout << "Fuck\n";
 			return true;
 		}
 	}

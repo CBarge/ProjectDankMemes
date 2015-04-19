@@ -75,6 +75,8 @@ bool Player::win()
 
 void Player::jump(float speed)
 {
+	_sfx = _audio.loadSFX("Sound_FX/jump.wav");
+	_sfx.play(0);
 	_yMomentum = speed;
 	_grounded = false;
 }
@@ -133,3 +135,4 @@ void Player::draw(basic_SDL_engi::SpriteBatch& _spriteBatch)
 
 	_spriteBatch.draw(destRect, uvRect, textureID, 0.0f, _color);
 }
+

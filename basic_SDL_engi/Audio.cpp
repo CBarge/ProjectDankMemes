@@ -93,6 +93,8 @@ namespace basic_SDL_engi
 			//already there
 			effect.m_chunk = it->second;
 		}
+
+		return effect;
 	}
 
 	Music Audio::loadMusic(const std::string& filePath)
@@ -119,5 +121,7 @@ namespace basic_SDL_engi
 			//already there
 			music.m_music = it->second;
 		}
+
+		return music;
 	}
 }
