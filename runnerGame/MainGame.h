@@ -5,18 +5,17 @@
 #include <basic_SDL_engi/Camera2D.h>
 #include <basic_SDL_engi/InputManager.h>
 #include <basic_SDL_engi/SpriteBatch.h>
+#include <basic_SDL_engi/Audio.h>
+#include <basic_SDL_engi/SpriteFont.h>
 
 #include "Player.h"
 #include "Level.h"
 #include "Chaser.h"
 #include "Button.h"
-#include "SFX.h"
-#include "Music.h"
 #include "CharInput.h"
-#include "Leaderboard.h"
 
 //for finding out what is going on, man
-enum class GameState{ PLAYING, EXIT, MAINMENU, SETTINGS, NEXTLEVEL, LOSER, HIGHSCORE, LEADERBOARD, CREDITS, LOOPING, DEAD };
+enum class GameState{ PLAYING, EXIT, MAINMENU, SETTINGS, NEXTLEVEL, LOSER, LEADERBOARD, CREDITS, LOOPING, DEAD, HIGHSCORE };
 
 class MainGame
 {
@@ -56,13 +55,21 @@ private:
 	//draws the game to the window
 	void drawGame();
 
+	void drawHud();
+
 	/// Member Variables
 	basic_SDL_engi::Window _window;					//the window the magic happens on
 	basic_SDL_engi::GLSLProgram _textureProgram;	//for the shader. textures and stuff.
 	basic_SDL_engi::InputManager _inputManager;		//for handling input
 	basic_SDL_engi::Camera2D _camera;				//main camera environment
+	basic_SDL_engi::Camera2D _hudCamera;			//hud camera env
 	basic_SDL_engi::SpriteBatch _buttonSpriteBatch;	//draws all of the buttons
 	basic_SDL_engi::SpriteBatch _agentSpriteBatch;	//draws all of the agents
+	basic_SDL_engi::SpriteBatch _hudSpriteBatch;
+	basic_SDL_engi::SpriteFont* _spriteFont;
+	basic_SDL_engi::Audio _audio;
+	basic_SDL_engi::Music _music;
+	basic_SDL_engi::SFX _sfx;
 
 	std::vector<Level*> _levels;		//where the action happens.
 
@@ -78,10 +85,8 @@ private:
 	std::vector<Button*> _buttons;	//vector of buttons
 	Button* _startButton;
 	Button* _exitButton;
-	Button* _leaderButton;
-	
+
 	CharInput* _newName;
-	Leaderboard* _leaderboard;
 
 	int _score = 0;				//how far you've gotten
 	int _numCurrentLevel;

@@ -1,119 +1,147 @@
 #include "CharInput.h"
 
-CharInput::CharInput(){
-	charCount = 0;
+CharInput::CharInput()
+{
 }
-CharInput::~CharInput(){
-
+CharInput::~CharInput()
+{
 }
 
-char CharInput::getChar(){
+void CharInput::init(basic_SDL_engi::InputManager* inputManager)
+{
+	_inputManager = inputManager;
+}
+
+void CharInput::getChar(){
 	if (_inputManager->keyPressed(SDLK_a)){
-		return 'A';
-		charCount++;
+		_name += 'A';
 	}
 	else if (_inputManager->keyPressed(SDLK_b)){
-		return 'B';
-		charCount++;
+		_name += 'B';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_c)){
-		return 'C';
-		charCount++;
+		_name += 'C';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_d)){
-		return 'D';
-		charCount++;
+		_name += 'D';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_e)){
-		return 'E';
-		charCount++;
+		_name += 'E';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_f)){
-		return 'F';
-		charCount++;
+		_name += 'F';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_g)){
-		return 'G';
-		charCount++;
+		_name += 'G';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_h)){
-		return 'H';
-		charCount++;
+		_name += 'H';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_i)){
-		return 'I';
-		charCount++;
+		_name += 'I';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_j)){
-		return 'J';
-		charCount++;
+		_name += 'J';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_k)){
-		return 'K';
-		charCount++;
+		_name += 'K';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_l)){
-		return 'L';
-		charCount++;
+		_name += 'L';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_m)){
-		return 'M';
-		charCount++;
+		_name += 'M';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_n)){
-		return 'N';
-		charCount++;
+		_name += 'N';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_o)){
-		return 'O';
-		charCount++;
+		_name += 'O';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_p)){
-		return 'P';
-		charCount++;
+		_name += 'P';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_q)){
-		return 'Q';
-		charCount++;
+		_name += 'Q';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_r)){
-		return 'R';
-		charCount++;
+		_name += 'R';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_s)){
-		return 'S';
-		charCount++;
+		_name += 'S';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_t)){
-		return 'T';
-		charCount++;
+		_name += 'T';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_u)){
-		return 'U';
-		charCount++;
+		_name += 'U';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_v)){
-		return 'V';
-		charCount++;
+		_name += 'V';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_w)){
-		return 'W';
-		charCount++;
+		_name += 'W';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_x)){
-		return 'X';
-		charCount++;
+		_name += 'X';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_y)){
-		return 'Y';
-		charCount++;
+		_name += 'Y';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_z)){
-		return 'Z';
-		charCount++;
+		_name += 'Z';
+		
 	}
 	else if (_inputManager->keyPressed(SDLK_RETURN)){
-		return '1'; 
+		while (_name.size() < 3)
+			_name += '!';
+	}
+	if (_name.size() > 2)
+	{
+		_done = true;
 	}
 }
 
+int CharInput::size()
+{
+	return _name.size();
+}
+
+bool CharInput::done()
+{
+	return _done;
+}
+
+std::string CharInput::getName()
+{
+	return _name;
+}
+
+void CharInput::resetName()
+{
+	_name = "";
+}

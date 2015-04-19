@@ -9,7 +9,6 @@
 #include <iostream>
 #include <random>
 #include <ctime>
-#include <string>
 
 const float OBSTACLE_SPEED = 5.0f;
 const float PLAYER_SPEED = 10.1f;
@@ -40,10 +39,6 @@ MainGame::~MainGame() {
 		delete _chasers[i];
 	}
 	delete _player;
-	//clearing music and sfx
-	Music::clearMusic();
-	Music::closePlayer();
-	SFX::clearFX();
 }
 
 void MainGame::run() {
@@ -60,6 +55,8 @@ void MainGame::run() {
 void MainGame::initSystems() {
 	//initializing the game engine
 	basic_SDL_engi::init();
+	//initializing sound
+	_audio.init();
 	//creating the window TO THE FUTURE
 	_window.createWin("Runner Game", _screenWidth, _screenHeight, 0);
 	//background color, can change?
@@ -70,10 +67,12 @@ void MainGame::initSystems() {
 	_agentSpriteBatch.init();
 	//for those coolio doolio buttons, mang
 	_buttonSpriteBatch.init();
+	//gotta have them chunky funky sprites, yo
+	_hudSpriteBatch.init();
+	//initializing the spritefont
+	_spriteFont = new basic_SDL_engi::SpriteFont("Fonts/Iron & Brine.ttf", 32);
 	//camera, focused on center of screen.
 	_camera.init(_screenWidth, _screenHeight);
-	//reads leaderboard file if it exists and saves data to vectors for later use
-	_leaderboard->initLeaderboard();
 }
 
 void MainGame::initLevels()
@@ -157,14 +156,13 @@ void MainGame::gameLoop() {
 		//Main Menu Loop
 		if (_gameState == GameState::MAINMENU)
 		{
+			_music = _audio.loadMusic("Music/MenuMusic.wav");
+			_music.play(-1);
 			initLevel(0);
-			Music::playMusic(1);
 			_startButton = new Button;
 			_startButton->init(0, -50.0f, 0.0f, 100.0f, 50.0f, &_inputManager, &_camera);
 			_exitButton = new Button;
 			_exitButton->init(1, -50.0f, -100.0f, 100.0f, 50.0f, &_inputManager, &_camera);
-			_leaderButton = new Button;
-			_leaderButton->init(6, -384.0f, -487.0f, 50.0f, 50.0f, &_inputManager, &_camera);
 			while (_gameState == GameState::MAINMENU) {
 				fpsLimiter.begin();
 
@@ -184,24 +182,19 @@ void MainGame::gameLoop() {
 
 				if (_startButton->checkPressed())
 				{
-					SFX::playSound(6);
 					_nextState = GameState::PLAYING;
 					_currentLevel = 1;
-					std::cout << "Butts\n";
+					_sfx = _audio.loadSFX("Sound_FX/menu_navigate.wav");
+					_sfx.play(0);
 				}
 				else if (_exitButton->checkPressed())
 				{
-					SFX::playSound(6);
-					std::cout << "Barf\n";
+					_sfx = _audio.loadSFX("Sound_FX/menu_navigate.wav");
+					_sfx.play(0);
 					_nextState = GameState::EXIT;
 					_loopState = GameState::DEAD;
 				}
-				else if (_leaderButton->checkPressed())
-				{
-					SFX::playSound(6);
 
-					_nextState = GameState::LEADERBOARD;
-				}
 				_inputManager.update();
 
 				drawGame();
@@ -221,7 +214,8 @@ void MainGame::gameLoop() {
 		// Main Game loop
 		else if (_gameState == GameState::PLAYING)
 		{
-			Music::playMusic(0);
+			_music = _audio.loadMusic("Music/MusicGame.wav");
+			_music.play(-1);
 			initLevel(1);
 			while (_gameState == GameState::PLAYING) {
 				fpsLimiter.begin();
@@ -263,36 +257,37 @@ void MainGame::gameLoop() {
 		else if (_gameState == GameState::LOSER)
 		{
 			while (_gameState == GameState::LOSER) {
-				//checks for new high score, if theres a high score goes to gamestate HIGHSCORE, else goes to LEADERBOARD
-				if (_leaderboard->checkHighScore){
-					_nextState = GameState::HIGHSCORE;
-					_gameState = _nextState;
-				}
-				else{
-					_nextState = GameState::LEADERBOARD;
-					_gameState = _nextState;
-				}
+				_nextState = GameState::MAINMENU;
+				_gameState = _nextState;
 			}
 		}
 
 		//New high score loop
 		else if (_gameState == GameState::HIGHSCORE)
 		{
-			std::string name = "";
-			_newName->charCount = 0; //resets charCount to 0
-			while (_gameState == GameState::HIGHSCORE){
-
+			_newName = new CharInput;
+			_newName->init(&_inputManager);
+			while (_gameState == GameState::HIGHSCORE)
+			{
 				processInput();
-				//enters loop to wait for 3 char input
-				while (_newName->charCount < 3 && _newName->getChar() != '1'){
-					name += _newName->getChar(); //appends to name
+				
+				if (!_newName->done())
+				{
+					_newName->getChar();
 				}
-				_leaderboard->addHighScore(_score, name);
-				//once name is entered, changes to leaderboard screen
-				_nextState = GameState::LEADERBOARD;
+				else
+				{
+					_nextState = GameState::LEADERBOARD;
+				}
 
+				std::cout << _newName->getName() << "\n";
+				//once name is entered, changes to leaderboard screen
+				_inputManager.update();
+
+				//needs ttf support, needs to draw, needs fps limiter
 			}
 		}
+
 		//Leaderboard Loop
 		else if (_gameState == GameState::LEADERBOARD)
 		{
@@ -357,8 +352,6 @@ void MainGame::checkWin() {
 	}
 	else if (_player->win())
 	{
-		SFX::playSound(0);
-
 		std::printf("Win...\nYou got %d points.\n",
 			_score);
 
@@ -466,6 +459,8 @@ void MainGame::drawGame() {
 
 		// Render to the screen
 		_agentSpriteBatch.renderBatch();
+
+		drawHud();
 	}
 
 	// Unbind the program
@@ -473,4 +468,19 @@ void MainGame::drawGame() {
 
 	// Swap our buffer and draw everything to the screen!
 	_window.bufferSwap();
+}
+
+void MainGame::drawHud()
+{
+	char buffer[256];
+
+	_hudSpriteBatch.begin();
+
+	sprintf_s(buffer, "HEALTH %.0f", _player->health());
+
+	_spriteFont->draw(_hudSpriteBatch, buffer, glm::vec2(1000, 300), glm::vec2(4.0), 0.0f,
+		basic_SDL_engi::Color(255, 255, 255, 255), basic_SDL_engi::Justification::RIGHT);
+
+	_hudSpriteBatch.end();
+	_hudSpriteBatch.renderBatch();
 }

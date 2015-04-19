@@ -1,6 +1,5 @@
 #include "Player.h"
 #include <SDL/SDL.h>
-#include "SFX.h"
 
 Player::Player() : _frames(0)
 {
@@ -76,7 +75,8 @@ bool Player::win()
 
 void Player::jump(float speed)
 {
-	SFX::playSound(8);
+	_sfx = _audio.loadSFX("Sound_FX/jump.wav");
+	_sfx.play(0);
 	_yMomentum = speed;
 	_grounded = false;
 }
@@ -135,3 +135,4 @@ void Player::draw(basic_SDL_engi::SpriteBatch& _spriteBatch)
 
 	_spriteBatch.draw(destRect, uvRect, textureID, 0.0f, _color);
 }
+

@@ -1,51 +1,50 @@
-﻿Build started 4/17/2015 5:42:30 PM.
-     1>Project "C:\Users\alcosta\Documents\GitHub\ProjectDankMemes\runnerGame\runnerGame.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Agent.cpp main.cpp MainGame.cpp SFX.cpp Music.cpp
-         Music.cpp
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\music.cpp(18): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\music.cpp(49): warning C4018: '<' : signed/unsigned mismatch
-         SFX.cpp
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\sfx.cpp(31): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\sfx.cpp(51): warning C4018: '<' : signed/unsigned mismatch
-         MainGame.cpp
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(34): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(38): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(100): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(116): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(146): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(162): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(215): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(284): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(290): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(293): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(304): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(344): warning C4244: 'argument' : conversion from 'Sint32' to 'float', possible loss of data
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\maingame.cpp(423): warning C4018: '<' : signed/unsigned mismatch
-         main.cpp
-         Agent.cpp
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\agent.cpp(45): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\agent.cpp(134): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
-     1>c:\users\alcosta\documents\github\projectdankmemes\runnergame\agent.cpp(136): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
-         Generating Code...
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\alcosta\Documents\GitHub\ProjectDankMemes\Debug\runnerGame.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib opengl32.lib glew32.lib basic_SDL_engi.lib SDL2_mixer.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\alcosta\Documents\GitHub\ProjectDankMemes\Debug\runnerGame.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\alcosta\Documents\GitHub\ProjectDankMemes\Debug\runnerGame.lib" /MACHINE:X86 Debug\runnerGame.res
-         Debug\Agent.obj
-         Debug\Button.obj
-         Debug\Chaser.obj
-         Debug\Level.obj
-         Debug\main.obj
-         Debug\MainGame.obj
-         Debug\Player.obj
-         Debug\SFX.obj
-         Debug\Music.obj
-         LINK : C:\Users\alcosta\Documents\GitHub\ProjectDankMemes\Debug\runnerGame.exe not found or not built by the last incremental link; performing full link
-     1>MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
-     1>SFX.obj : error LNK2001: unresolved external symbol "private: static class std::vector<struct Mix_Chunk *,class std::allocator<struct Mix_Chunk *> > SFX::_sounds" (?_sounds@SFX@@0V?$vector@PAUMix_Chunk@@V?$allocator@PAUMix_Chunk@@@std@@@std@@A)
-     1>Music.obj : error LNK2001: unresolved external symbol "private: static class std::vector<struct _Mix_Music *,class std::allocator<struct _Mix_Music *> > Music::_musics" (?_musics@Music@@0V?$vector@PAU_Mix_Music@@V?$allocator@PAU_Mix_Music@@@std@@@std@@A)
-     1>C:\Users\alcosta\Documents\GitHub\ProjectDankMemes\Debug\runnerGame.exe : fatal error LNK1120: 2 unresolved externals
-     1>Done Building Project "C:\Users\alcosta\Documents\GitHub\ProjectDankMemes\runnerGame\runnerGame.vcxproj" (Build target(s)) -- FAILED.
-
-Build FAILED.
-
-Time Elapsed 00:00:03.93
+﻿  Player.cpp
+  MainGame.cpp
+c:\users\tzeryushi\documents\github\projectdankmemes\basic_sdl_engi\gltexture.h(8): warning C4099: 'basic_SDL_engi::GLTexture' : type name first seen using 'class' now seen using 'struct'
+          c:\users\tzeryushi\documents\github\projectdankmemes\basic_sdl_engi\spritefont.h(36) : see declaration of 'basic_SDL_engi::GLTexture'
+c:\users\tzeryushi\documents\github\projectdankmemes\runnergame\maingame.cpp(34): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\documents\github\projectdankmemes\runnergame\maingame.cpp(38): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\documents\github\projectdankmemes\runnergame\maingame.cpp(106): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\documents\github\projectdankmemes\runnergame\maingame.cpp(122): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\documents\github\projectdankmemes\runnergame\maingame.cpp(152): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+c:\users\tzeryushi\documents\github\projectdankmemes\runnergame\maingame.cpp(169): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+c:\users\tzeryushi\documents\github\projectdankmemes\runnergame\maingame.cpp(223): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+c:\users\tzeryushi\documents\github\projectdankmemes\runnergame\maingame.cpp(316): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\documents\github\projectdankmemes\runnergame\maingame.cpp(322): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\documents\github\projectdankmemes\runnergame\maingame.cpp(325): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\documents\github\projectdankmemes\runnergame\maingame.cpp(336): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
+c:\users\tzeryushi\documents\github\projectdankmemes\runnergame\maingame.cpp(374): warning C4244: 'argument' : conversion from 'Sint32' to 'float', possible loss of data
+c:\users\tzeryushi\documents\github\projectdankmemes\runnergame\maingame.cpp(453): warning C4018: '<' : signed/unsigned mismatch
+  main.cpp
+c:\users\tzeryushi\documents\github\projectdankmemes\basic_sdl_engi\gltexture.h(8): warning C4099: 'basic_SDL_engi::GLTexture' : type name first seen using 'class' now seen using 'struct'
+          c:\users\tzeryushi\documents\github\projectdankmemes\basic_sdl_engi\spritefont.h(36) : see declaration of 'basic_SDL_engi::GLTexture'
+  Level.cpp
+c:\users\tzeryushi\documents\github\projectdankmemes\runnergame\level.cpp(41): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\documents\github\projectdankmemes\runnergame\level.cpp(42): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\documents\github\projectdankmemes\runnergame\level.cpp(68): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
+c:\users\tzeryushi\documents\github\projectdankmemes\runnergame\level.cpp(69): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
+  Chaser.cpp
+  CharInput.cpp
+  Button.cpp
+  Agent.cpp
+c:\users\tzeryushi\documents\github\projectdankmemes\runnergame\agent.cpp(45): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\documents\github\projectdankmemes\runnergame\agent.cpp(134): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
+c:\users\tzeryushi\documents\github\projectdankmemes\runnergame\agent.cpp(136): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
+  Generating Code...
+MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
+basic_SDL_engi.lib(Audio.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(Audio.obj)' or at 'C:\Users\Tzeryushi\Documents\GitHub\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+basic_SDL_engi.lib(basic_SDL_engi.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(basic_SDL_engi.obj)' or at 'C:\Users\Tzeryushi\Documents\GitHub\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+basic_SDL_engi.lib(Camera2D.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(Camera2D.obj)' or at 'C:\Users\Tzeryushi\Documents\GitHub\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+basic_SDL_engi.lib(Errors.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(Errors.obj)' or at 'C:\Users\Tzeryushi\Documents\GitHub\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+basic_SDL_engi.lib(GLSLProgram.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(GLSLProgram.obj)' or at 'C:\Users\Tzeryushi\Documents\GitHub\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+basic_SDL_engi.lib(ImageLoader.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(ImageLoader.obj)' or at 'C:\Users\Tzeryushi\Documents\GitHub\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+basic_SDL_engi.lib(InputManager.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(InputManager.obj)' or at 'C:\Users\Tzeryushi\Documents\GitHub\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+basic_SDL_engi.lib(IOManager.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(IOManager.obj)' or at 'C:\Users\Tzeryushi\Documents\GitHub\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+basic_SDL_engi.lib(picoPNG.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(picoPNG.obj)' or at 'C:\Users\Tzeryushi\Documents\GitHub\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+basic_SDL_engi.lib(ResourceManager.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(ResourceManager.obj)' or at 'C:\Users\Tzeryushi\Documents\GitHub\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+basic_SDL_engi.lib(SpriteBatch.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(SpriteBatch.obj)' or at 'C:\Users\Tzeryushi\Documents\GitHub\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+basic_SDL_engi.lib(SpriteFont.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(SpriteFont.obj)' or at 'C:\Users\Tzeryushi\Documents\GitHub\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+basic_SDL_engi.lib(TextureCache.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(TextureCache.obj)' or at 'C:\Users\Tzeryushi\Documents\GitHub\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+basic_SDL_engi.lib(Time.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(Time.obj)' or at 'C:\Users\Tzeryushi\Documents\GitHub\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+basic_SDL_engi.lib(Window.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'basic_SDL_engi.lib(Window.obj)' or at 'C:\Users\Tzeryushi\Documents\GitHub\ProjectDankMemes\Debug\vc120.pdb'; linking object as if no debug info
+  runnerGame.vcxproj -> C:\Users\Tzeryushi\Documents\GitHub\ProjectDankMemes\Debug\runnerGame.exe

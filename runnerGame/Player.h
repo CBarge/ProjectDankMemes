@@ -6,6 +6,7 @@
 #include <basic_SDL_engi/Camera2D.h>
 #include <basic_SDL_engi/SpriteBatch.h>
 #include <basic_SDL_engi/ResourceManager.h>
+#include <basic_SDL_engi/Audio.h>
 
 class Player : public Agent
 {
@@ -28,6 +29,8 @@ public:
 private:
 	basic_SDL_engi::InputManager* _inputManager;
 	basic_SDL_engi::Camera2D* _camera;
+	basic_SDL_engi::Audio _audio;
+	basic_SDL_engi::SFX _sfx;
 
 	glm::vec2 _lastPos;
 	glm::vec2 _direction;

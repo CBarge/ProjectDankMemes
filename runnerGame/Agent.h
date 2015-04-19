@@ -32,6 +32,8 @@ public:
 
 	glm::vec2 getPosition() const { return _position; }
 
+	float health() { return _health; }
+
 protected:
 	void checkTilePosition(const std::vector<std::string>& levelData,
 							std::vector<glm::vec2>& collideTilePositions,

@@ -59,7 +59,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;opengl32.lib;glew32.lib;basic_SDL_engi.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;opengl32.lib;glew32.lib;basic_SDL_engi.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -85,26 +85,20 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CharInput.cpp" />
     <ClCompile Include="Chaser.cpp" />
-    <ClCompile Include="Leaderboard.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="SFX.cpp" />
-    <ClCompile Include="Music.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Agent.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CharInput.h" />
     <ClInclude Include="Chaser.h" />
-    <ClInclude Include="Leaderboard.h" />
-    <ClInclude Include="Music.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="SFX.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="runnerGame.rc" />
