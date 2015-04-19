@@ -1,4 +1,4 @@
-#pragma once
+
 #define _CRT_SECURE_NO_WARNINGS
 #include <cstdlib>
 #include <string>
@@ -32,6 +32,7 @@ void Leaderboard::initLeaderboard(){
 		if (myfile.is_open()){
 			while (getline(myfile, line)){//for every line in file
 				int i = 0;
+				int j = 0;
 				std::string name = "";
 				std::string score = "";
 				while (line[i] != '\t'){//skips over rank
@@ -46,9 +47,13 @@ void Leaderboard::initLeaderboard(){
 				while (line[i] != '\n'){//finds score
 					score += line[i];
 					i++;
+					j++;
 				}
 				int intScore = atoi(score.c_str);
 
+				if (j > 9){ //stops if there are more than 10 scores in the leaderboard text file and only take the ones on the first 10 lines
+					break;
+				}
 				scores.push_back(intScore);
 				names.push_back(name);
 			}
@@ -57,17 +62,23 @@ void Leaderboard::initLeaderboard(){
 }
 int Leaderboard::getRank(int score){
 	if (leaderboardExists()){
-		if (scores.size() == 10 && score < scores.at(9)) return 0;
+		if (scores.size() == 10 && score < scores.at(9))
+			return 0;
+		else if (score >= scores.at(0))
+			return 1;
 		else{
-			for (int i = scores.size()-1; i >= 0; i--){
+			for (int i = scores.size() - 1; i >= 0; i--){
 				if (score <= scores.at(i)){
-					return i;
+					return i + 2;
 				}
+			}
 			}
 		}
 	}
-	else return 1;
+	else 
+		return 1;
 }
+
 bool Leaderboard::checkHighScore(int score){
 	if (getRank != 0) return true;
 	else return false;
@@ -76,12 +87,18 @@ bool Leaderboard::checkHighScore(int score){
 void Leaderboard::addHighScore(int score, std::string name){
 	//should check in maingame using checkHighScore if this method should be called 
 	//adds new high score to vectors tracking top 10 names and scores
-	std::vector<int>::iterator itS = scores.begin();
+	
+	std::vector<int>::iterator itS = scores.begin(); //itS is Iterator Score
 	scores.insert(itS + getRank(score) - 1, score);
-	if (scores.size() > 10) scores.pop_back;
+	
+	if (scores.size() > 10) 
+		scores.pop_back;
+	
 	std::vector<std::string>::iterator itN = names.begin();
 	names.insert(itN + getRank(score) - 1, name);
-	if (names.size() > 10) names.pop_back;
+	
+	if (names.size() > 10) 
+		names.pop_back;
 
 	std::string line = "";
 	std::ofstream myfile;

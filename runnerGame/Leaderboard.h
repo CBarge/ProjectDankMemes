@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 #include <vector>
 
@@ -15,6 +16,6 @@ public:
 
 private:
 	std::string filename;
-	std::vector<int> scores;
-	std::vector<std::string> names;
+	std::vector<int> *scores;
+	std::vector<std::string> *names;
 };
