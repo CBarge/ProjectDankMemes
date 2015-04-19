@@ -72,6 +72,8 @@ void MainGame::initSystems() {
 	_buttonSpriteBatch.init();
 	//camera, focused on center of screen.
 	_camera.init(_screenWidth, _screenHeight);
+	//reads leaderboard file if it exists and saves data to vectors for later use
+	_leaderboard->initLeaderboard();
 }
 
 void MainGame::initLevels()
@@ -261,10 +263,15 @@ void MainGame::gameLoop() {
 		else if (_gameState == GameState::LOSER)
 		{
 			while (_gameState == GameState::LOSER) {
-				Music::stopMusic(1); //stop music first or play fail sound while music still playing?
-				SFX::playSound(0);
-				_nextState = GameState::MAINMENU;
-				_gameState = _nextState;
+				//checks for new high score, if theres a high score goes to gamestate HIGHSCORE, else goes to LEADERBOARD
+				if (_leaderboard->checkHighScore){
+					_nextState = GameState::HIGHSCORE;
+					_gameState = _nextState;
+				}
+				else{
+					_nextState = GameState::LEADERBOARD;
+					_gameState = _nextState;
+				}
 			}
 		}
 
@@ -280,7 +287,7 @@ void MainGame::gameLoop() {
 				while (_newName->charCount < 3 && _newName->getChar() != '1'){
 					name += _newName->getChar(); //appends to name
 				}
-				//need to save name to leaderboard file here by calling Leaderboard function, i'll do that
+				_leaderboard->addHighScore(_score, name);
 				//once name is entered, changes to leaderboard screen
 				_nextState = GameState::LEADERBOARD;
 

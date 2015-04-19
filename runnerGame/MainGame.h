@@ -13,6 +13,7 @@
 #include "SFX.h"
 #include "Music.h"
 #include "CharInput.h"
+#include "Leaderboard.h"
 
 //for finding out what is going on, man
 enum class GameState{ PLAYING, EXIT, MAINMENU, SETTINGS, NEXTLEVEL, LOSER, HIGHSCORE, LEADERBOARD, CREDITS, LOOPING, DEAD };
@@ -80,6 +81,7 @@ private:
 	Button* _leaderButton;
 	
 	CharInput* _newName;
+	Leaderboard* _leaderboard;
 
 	int _score = 0;				//how far you've gotten
 	int _numCurrentLevel;
