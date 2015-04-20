@@ -170,7 +170,7 @@ void Agent::collideWithTile(glm::vec2 tilePos, char tileType)
 			_grounded = false;
 			break;
 		case 'P':
-			jump(30.0f);
+			jump(20.0f);
 			_grounded = false;
 			break;
 		case 'H':

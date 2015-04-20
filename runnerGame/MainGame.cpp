@@ -103,7 +103,7 @@ void MainGame::initLevel(int numLevel) {
 	//zeroth level, nothing happens
 	if (numLevel == 0)
 	{
-		glClearColor(0.0f, 0.0f, 0.0f, 0.0f); //main menu background is black
+		glClearColor(0.05f, 0.07f, 0.1f, 0.0f); //main menu background is black
 		_currentLevel = 0;
 	}
 	else if (numLevel == 1)
@@ -242,7 +242,7 @@ void MainGame::gameLoop() {
 		{
 			initLevel(0);
 			_startButton = new Button;
-			_startButton->init(0, -50.0f, 0.0f, 100.0f, 50.0f, &_inputManager, &_camera);
+			_startButton->init(0, -50.0f, -175.0f, 100.0f, 50.0f, &_inputManager, &_camera);
 			while (_gameState == GameState::NEXTLEVEL) {
 				fpsLimiter.begin();
 
@@ -632,6 +632,13 @@ void MainGame::drawGame() {
 		//start drawing the agents
 		_buttonSpriteBatch.begin();
 
+		/*glm::vec4 pos(-400.0f, 120.0f, 800.0f, 150.0f);
+		glm::vec4 uv(0.0f, 0.0f, 1.0f, 1.0f);
+		static basic_SDL_engi::GLTexture texture = basic_SDL_engi::ResourceManager::getTexture("Textures/buttLogo.png");
+		basic_SDL_engi::Color color(255, 255, 255, 255);
+
+		_buttonSpriteBatch.draw(pos, uv, texture.id, 0.0f, color);
+		*/
 		_startButton->draw(_buttonSpriteBatch);
 
 		_exitButton->draw(_buttonSpriteBatch);
@@ -821,8 +828,23 @@ void MainGame::drawText()
 			basic_SDL_engi::Color(50, 50, 50, 195), basic_SDL_engi::Justification::MIDDLE);
 
 		sprintf_s(buffer, "BUTT ADVENTURES");
-
+		
 		_spriteFont->draw(_hudSpriteBatch, buffer, glm::vec2(_screenWidth / 2, _screenHeight - (_screenHeight / 3)), glm::vec2(2.0), 0.0f,
+			basic_SDL_engi::Color(255, 255, 255, 255), basic_SDL_engi::Justification::MIDDLE);
+		
+		sprintf_s(buffer, "Try to run as far as you can!");
+
+		_spriteFont->draw(_hudSpriteBatch, buffer, glm::vec2((_screenWidth / 2), (_screenHeight / 2) - 200), glm::vec2(0.9), 0.0f,
+			basic_SDL_engi::Color(255, 255, 255, 255), basic_SDL_engi::Justification::MIDDLE);
+
+		sprintf_s(buffer, "Don't slow down, you'll probably die or something.");
+
+		_spriteFont->draw(_hudSpriteBatch, buffer, glm::vec2((_screenWidth / 2), (_screenHeight / 2) - 230), glm::vec2(0.9), 0.0f,
+			basic_SDL_engi::Color(255, 255, 255, 255), basic_SDL_engi::Justification::MIDDLE);
+
+		sprintf_s(buffer, "Press W to jump, A to slow, and D to speed up.");
+
+		_spriteFont->draw(_hudSpriteBatch, buffer, glm::vec2((_screenWidth / 2), (_screenHeight / 2) - 260), glm::vec2(0.9), 0.0f,
 			basic_SDL_engi::Color(255, 255, 255, 255), basic_SDL_engi::Justification::MIDDLE);
 	}
 	else if (_gameState == GameState::NEXTLEVEL)
@@ -848,6 +870,11 @@ void MainGame::drawText()
 		sprintf_s(buffer, "GAME OVER");
 
 		_spriteFont->draw(_hudSpriteBatch, buffer, glm::vec2(_screenWidth / 2, _screenHeight - (_screenHeight / 3)), glm::vec2(2.0), 0.0f,
+			basic_SDL_engi::Color(255, 255, 255, 255), basic_SDL_engi::Justification::MIDDLE);
+
+		sprintf_s(buffer, "Try not to do whatever you did anymore.");
+
+		_spriteFont->draw(_hudSpriteBatch, buffer, glm::vec2((_screenWidth / 2), (_screenHeight / 2) - 150), glm::vec2(0.9), 0.0f,
 			basic_SDL_engi::Color(255, 255, 255, 255), basic_SDL_engi::Justification::MIDDLE);
 
 		sprintf_s(buffer, "SCORE: %d", _score);
