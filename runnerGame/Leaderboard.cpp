@@ -24,6 +24,7 @@ bool Leaderboard::leaderboardExists(){ //checks if a file
 	}
 	else
 		return false;
+	myfile.close();
 }
 void Leaderboard::initLeaderboard(){
 	if (leaderboardExists()){
@@ -58,6 +59,7 @@ void Leaderboard::initLeaderboard(){
 				names.push_back(name);
 			}
 		}
+		myfile.close();
 	}
 }
 int Leaderboard::getRank(int score){
@@ -80,8 +82,10 @@ int Leaderboard::getRank(int score){
 }
 
 bool Leaderboard::checkHighScore(int score){
-	if (getRank != 0) return true;
-	else return false;
+	if (getRank != 0)
+		return true;
+	else
+		return false;
 }
 
 void Leaderboard::addHighScore(int score, std::string name){
@@ -109,7 +113,8 @@ void Leaderboard::addHighScore(int score, std::string name){
 		std::string scoreStr = std::to_string(scores.at(i));
 		myfile << rank + '\t' + names.at(i) + '\t' + scoreStr + '\n';
 	}
-	
+	myfile.close();
+
 }
 
 std::string Leaderboard::LeaderboardToString(){
@@ -121,5 +126,6 @@ std::string Leaderboard::LeaderboardToString(){
 			leaderboardStr += line;
 		}
 	}
+	myfile.close();
 	return leaderboardStr;
 }
