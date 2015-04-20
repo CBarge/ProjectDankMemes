@@ -36,6 +36,8 @@ Level::Level(const std::string& fileName)
 	static int castleRound = basic_SDL_engi::ResourceManager::getTexture("Textures/Tiles/castleCenter_rounded.png").id;
 	static int spikes = basic_SDL_engi::ResourceManager::getTexture("Textures/Items/spikes.png").id;
 	static int spring = basic_SDL_engi::ResourceManager::getTexture("Textures/Items/springboardUp.png").id;
+	static int doorBot = basic_SDL_engi::ResourceManager::getTexture("Textures/Tiles/door_openMid.png").id;
+	static int doorTop = basic_SDL_engi::ResourceManager::getTexture("Textures/Tiles/door_openTop.png").id;
 
 	// Render all the tiles
 	for (int y = 0; y < _levelData.size(); y++) {
@@ -63,6 +65,12 @@ Level::Level(const std::string& fileName)
 			case 'H':
 				_spriteBatch.draw(destRect, uvRect, castleRound, 0.0f, whiteColor);
 				break;
+			case 'D':
+				_spriteBatch.draw(destRect, uvRect, doorBot, 0.0f, whiteColor);
+				break;
+			case 'T':
+				_spriteBatch.draw(destRect, uvRect, doorTop, 0.0f, whiteColor);
+				break;
 			case '@':
 				_levelData[y][x] = '.';
 				_startPlayerPos.x = x * TILE_WIDTH;
@@ -75,12 +83,11 @@ Level::Level(const std::string& fileName)
 			case '.':
 				break;
 			default:
-				std::printf("Unexpected symbol %c at (%d,%d)", tile, x, y);
+				std::printf("Unexpected symbol %c at (%d,%d)\n", tile, x, y);
 				break;
 			}
 		}
 	}
-
 	_spriteBatch.end();
 }
 

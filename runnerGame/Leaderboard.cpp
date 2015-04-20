@@ -1,5 +1,3 @@
-
-#define _CRT_SECURE_NO_WARNINGS
 #include <cstdlib>
 #include <string>
 #include <iostream>
@@ -10,8 +8,6 @@
 
 Leaderboard::Leaderboard(){
 	filename = "Scores.txt";
-	scores = new <int>;
-	names = new <std::string>;
 }
 Leaderboard::~Leaderboard(){
 
@@ -33,9 +29,11 @@ void Leaderboard::initLeaderboard(){
 		std::string line = "";
 		std::ifstream myfile(filename.c_str());
 		if (myfile.is_open()){
+			scores.clear();
+			names.clear();
+			int j = 0;
 			while (getline(myfile, line)){//for every line in file
 				int i = 0;
-				int j = 0;
 				std::string name = "";
 				std::string score = "";
 				while (line[i] != '\t'){//skips over rank
@@ -47,14 +45,14 @@ void Leaderboard::initLeaderboard(){
 					i++;
 				}
 				i++;
-				while (line[i] != '\n'){//finds score
+				int k = 0;
+				while (line[i] != '\0'){//finds score
 					score += line[i];
 					i++;
-					j++;
 				}
-				int intScore = atoi(score.c_str);
-
-				if (j > 9){ //stops if there are more than 10 scores in the leaderboard text file and only take the ones on the first 10 lines
+				j++;
+				int intScore = atoi(score.c_str());
+				if (j > 10){ //stops if there are more than 10 scores in the leaderboard text file and only take the ones on the first 10 lines
 					break;
 				}
 				scores.push_back(intScore);
@@ -76,7 +74,6 @@ int Leaderboard::getRank(int score){
 					return i + 2;
 				}
 			}
-			}
 		}
 	}
 	else 
@@ -84,7 +81,7 @@ int Leaderboard::getRank(int score){
 }
 
 bool Leaderboard::checkHighScore(int score){
-	if (getRank != 0)
+	if (getRank(score) != 0)
 		return true;
 	else
 		return false;
@@ -95,16 +92,18 @@ void Leaderboard::addHighScore(int score, std::string name){
 	//adds new high score to vectors tracking top 10 names and scores
 	
 	std::vector<int>::iterator itS = scores.begin(); //itS is Iterator Score
-	scores.insert(itS + getRank(score) - 1, score);
+
+	int rank = getRank(score);
+
+	scores.insert(itS + rank - 1, score);
 	
 	if (scores.size() > 10) 
-		scores.pop_back;
-	
+		scores.pop_back();
 	std::vector<std::string>::iterator itN = names.begin();
-	names.insert(itN + getRank(score) - 1, name);
-	
-	if (names.size() > 10) 
-		names.pop_back;
+	names.insert(itN + rank - 1, name);
+
+	if (names.size() > 10)
+		names.pop_back();
 
 	std::string line = "";
 	std::ofstream myfile;
@@ -119,15 +118,12 @@ void Leaderboard::addHighScore(int score, std::string name){
 
 }
 
-std::string Leaderboard::LeaderboardToString(){
-	std::string leaderboardStr = ""; 
-	std::string line = "";
-	std::ifstream myfile(filename.c_str());
-	if (myfile.is_open()){
-		while (getline(myfile, line)){
-			leaderboardStr += line;
-		}
-	}
-	myfile.close();
-	return leaderboardStr;
+std::vector<int> Leaderboard::getScores()
+{
+	return scores;
+}
+
+std::vector<std::string> Leaderboard::getNames()
+{
+	return names;
 }

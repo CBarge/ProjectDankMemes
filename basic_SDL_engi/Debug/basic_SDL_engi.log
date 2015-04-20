@@ -1,27 +1,27 @@
 ﻿  Window.cpp
   Time.cpp
-c:\users\tzeryushi\desktop\progproject\projectdankmemes\basic_sdl_engi\time.cpp(30): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
-c:\users\tzeryushi\desktop\progproject\projectdankmemes\basic_sdl_engi\time.cpp(33): warning C4244: 'argument' : conversion from 'float' to 'Uint32', possible loss of data
-c:\users\tzeryushi\desktop\progproject\projectdankmemes\basic_sdl_engi\time.cpp(45): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
-c:\users\tzeryushi\desktop\progproject\projectdankmemes\basic_sdl_engi\time.cpp(47): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+c:\users\tzeryushi\desktop\projectdankmemes\basic_sdl_engi\time.cpp(30): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+c:\users\tzeryushi\desktop\projectdankmemes\basic_sdl_engi\time.cpp(33): warning C4244: 'argument' : conversion from 'float' to 'Uint32', possible loss of data
+c:\users\tzeryushi\desktop\projectdankmemes\basic_sdl_engi\time.cpp(45): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+c:\users\tzeryushi\desktop\projectdankmemes\basic_sdl_engi\time.cpp(47): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
   TextureCache.cpp
   SpriteFont.cpp
-c:\users\tzeryushi\desktop\progproject\projectdankmemes\basic_sdl_engi\spritefont.cpp(38): warning C4316: 'glm::tvec4<int,0>' : object allocated on the heap may not be aligned 16
-c:\users\tzeryushi\desktop\progproject\projectdankmemes\basic_sdl_engi\spritefont.cpp(98): warning C4018: '<' : signed/unsigned mismatch
-c:\users\tzeryushi\desktop\progproject\projectdankmemes\basic_sdl_engi\spritefont.cpp(108): warning C4244: '*=' : conversion from 'float' to 'unsigned char', possible loss of data
-c:\users\tzeryushi\desktop\progproject\projectdankmemes\basic_sdl_engi\spritefont.cpp(143): warning C4316: 'basic_SDL_engi::CharGlyph' : object allocated on the heap may not be aligned 16
+c:\users\tzeryushi\desktop\projectdankmemes\basic_sdl_engi\spritefont.cpp(38): warning C4316: 'glm::tvec4<int,0>' : object allocated on the heap may not be aligned 16
+c:\users\tzeryushi\desktop\projectdankmemes\basic_sdl_engi\spritefont.cpp(98): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\desktop\projectdankmemes\basic_sdl_engi\spritefont.cpp(108): warning C4244: '*=' : conversion from 'float' to 'unsigned char', possible loss of data
+c:\users\tzeryushi\desktop\projectdankmemes\basic_sdl_engi\spritefont.cpp(143): warning C4316: 'basic_SDL_engi::CharGlyph' : object allocated on the heap may not be aligned 16
   SpriteBatch.cpp
-c:\users\tzeryushi\desktop\progproject\projectdankmemes\basic_sdl_engi\spritebatch.cpp(26): warning C4018: '<' : signed/unsigned mismatch
-c:\users\tzeryushi\desktop\progproject\projectdankmemes\basic_sdl_engi\spritebatch.cpp(67): warning C4018: '<' : signed/unsigned mismatch
-c:\users\tzeryushi\desktop\progproject\projectdankmemes\basic_sdl_engi\spritebatch.cpp(97): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\desktop\projectdankmemes\basic_sdl_engi\spritebatch.cpp(26): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\desktop\projectdankmemes\basic_sdl_engi\spritebatch.cpp(67): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\desktop\projectdankmemes\basic_sdl_engi\spritebatch.cpp(97): warning C4018: '<' : signed/unsigned mismatch
   Sprite.cpp
   ResourceManager.cpp
   picoPNG.cpp
   IOManager.cpp
-c:\users\tzeryushi\desktop\progproject\projectdankmemes\basic_sdl_engi\iomanager.cpp(22): warning C4244: 'initializing' : conversion from 'std::streamoff' to 'int', possible loss of data
-c:\users\tzeryushi\desktop\progproject\projectdankmemes\basic_sdl_engi\iomanager.cpp(26): warning C4244: '-=' : conversion from 'std::streamoff' to 'int', possible loss of data
+c:\users\tzeryushi\desktop\projectdankmemes\basic_sdl_engi\iomanager.cpp(22): warning C4244: 'initializing' : conversion from 'std::streamoff' to 'int', possible loss of data
+c:\users\tzeryushi\desktop\projectdankmemes\basic_sdl_engi\iomanager.cpp(26): warning C4244: '-=' : conversion from 'std::streamoff' to 'int', possible loss of data
   InputManager.cpp
-c:\users\tzeryushi\desktop\progproject\projectdankmemes\basic_sdl_engi\inputmanager.cpp(54): warning C4101: 'isPressed' : unreferenced local variable
+c:\users\tzeryushi\desktop\projectdankmemes\basic_sdl_engi\inputmanager.cpp(54): warning C4101: 'isPressed' : unreferenced local variable
   ImageLoader.cpp
   GLSLProgram.cpp
   Errors.cpp
@@ -29,8 +29,9 @@ c:\users\tzeryushi\desktop\progproject\projectdankmemes\basic_sdl_engi\inputmana
   basic_SDL_engi.cpp
   Audio.cpp
   Generating Code...
+cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
 opengl32.lib(OPENGL32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in SDL2.lib(SDL2.dll); second definition ignored
 opengl32.lib(OPENGL32.dll) : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
 glew32.lib(glew32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in SDL2.lib(SDL2.dll); second definition ignored
 glew32.lib(glew32.dll) : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
-  basic_SDL_engi.vcxproj -> C:\Users\Tzeryushi\Desktop\progProject\ProjectDankMemes\Debug\basic_SDL_engi.lib
+  basic_SDL_engi.vcxproj -> C:\Users\Tzeryushi\Desktop\ProjectDankMemes\Debug\basic_SDL_engi.lib

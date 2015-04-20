@@ -12,10 +12,11 @@ public:
 	int getRank(int score);
 	bool checkHighScore(int score);
 	void addHighScore(int score, std::string name);
-	std::string LeaderboardToString();
+	std::vector<int> getScores();
+	std::vector<std::string> getNames();
 
 private:
 	std::string filename;
-	int* scores;
-	std::string* names;
+	std::vector<int> scores;
+	std::vector<std::string> names;
 };

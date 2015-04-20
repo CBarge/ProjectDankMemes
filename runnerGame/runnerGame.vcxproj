@@ -85,6 +85,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CharInput.cpp" />
     <ClCompile Include="Chaser.cpp" />
+    <ClCompile Include="Leaderboard.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainGame.cpp" />
@@ -95,6 +96,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="CharInput.h" />
     <ClInclude Include="Chaser.h" />
+    <ClInclude Include="Leaderboard.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Player.h" />

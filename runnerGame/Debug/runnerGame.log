@@ -1,9 +1,39 @@
-﻿Build started 4/19/2015 6:46:01 PM.
-     1>Project "C:\Users\Arturo\Documents\GitHub\ProjectDankMemes\runnerGame\runnerGame.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         runnerGame.vcxproj -> C:\Users\Arturo\Documents\GitHub\ProjectDankMemes\Debug\runnerGame.exe
-     1>Done Building Project "C:\Users\Arturo\Documents\GitHub\ProjectDankMemes\runnerGame\runnerGame.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:00.04
+﻿  MainGame.cpp
+c:\users\tzeryushi\desktop\projectdankmemes\basic_sdl_engi\gltexture.h(8): warning C4099: 'basic_SDL_engi::GLTexture' : type name first seen using 'class' now seen using 'struct'
+          c:\users\tzeryushi\desktop\projectdankmemes\basic_sdl_engi\spritefont.h(36) : see declaration of 'basic_SDL_engi::GLTexture'
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(34): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(38): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(139): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(168): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(189): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(249): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(288): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(333): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(382): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(434): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(473): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(512): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(518): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(521): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(532): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(575): warning C4244: 'argument' : conversion from 'Sint32' to 'float', possible loss of data
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(660): warning C4018: '<' : signed/unsigned mismatch
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(779): warning C4305: 'argument' : truncation from 'double' to 'const float'
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(789): warning C4305: 'argument' : truncation from 'double' to 'const float'
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(815): warning C4305: 'argument' : truncation from 'double' to 'const float'
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(820): warning C4305: 'argument' : truncation from 'double' to 'const float'
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(845): warning C4305: 'argument' : truncation from 'double' to 'const float'
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(855): warning C4305: 'argument' : truncation from 'double' to 'const float'
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(904): warning C4305: 'argument' : truncation from 'double' to 'const float'
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(909): warning C4305: 'argument' : truncation from 'double' to 'const float'
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(914): warning C4305: 'argument' : truncation from 'double' to 'const float'
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(919): warning C4305: 'argument' : truncation from 'double' to 'const float'
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(924): warning C4305: 'argument' : truncation from 'double' to 'const float'
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(929): warning C4305: 'argument' : truncation from 'double' to 'const float'
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(934): warning C4305: 'argument' : truncation from 'double' to 'const float'
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(939): warning C4305: 'argument' : truncation from 'double' to 'const float'
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(944): warning C4305: 'argument' : truncation from 'double' to 'const float'
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(949): warning C4305: 'argument' : truncation from 'double' to 'const float'
+c:\users\tzeryushi\desktop\projectdankmemes\runnergame\maingame.cpp(954): warning C4305: 'argument' : truncation from 'double' to 'const float'
+MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
+  runnerGame.vcxproj -> C:\Users\Tzeryushi\Desktop\ProjectDankMemes\Debug\runnerGame.exe

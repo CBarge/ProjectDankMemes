@@ -28,6 +28,8 @@ public:
 	//getter for _grounded
 	bool feetOnGround();
 
+	void victory();
+
 	virtual void jump(float speed);
 
 	glm::vec2 getPosition() const { return _position; }
@@ -48,5 +50,6 @@ protected:
 	float _health;
 	bool _grounded;
 	float _yMomentum;
+	bool _won = false;
 };
 

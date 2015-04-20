@@ -113,6 +113,11 @@ bool Agent::feetOnGround()
 	return _grounded;
 }
 
+void Agent::victory()
+{
+	_won = true;
+}
+
 void Agent::jump(float speed)
 {
 	return;
@@ -170,6 +175,10 @@ void Agent::collideWithTile(glm::vec2 tilePos, char tileType)
 			break;
 		case 'H':
 			_position.y += TILE_WIDTH;
+			break;
+		case 'T':
+		case 'D':
+			victory();
 			break;
 		default:
 			//normal tile

@@ -49,6 +49,7 @@ void Button::draw(basic_SDL_engi::SpriteBatch& _spriteBatch)
 	static int sound = basic_SDL_engi::ResourceManager::getTexture("Textures/buttons/unclicked/sound.png").id;
 	static int credits = basic_SDL_engi::ResourceManager::getTexture("Textures/buttons/unclicked/Credits.png").id;
 	static int leaderboard = basic_SDL_engi::ResourceManager::getTexture("Textures/buttons/unclicked/leaderboard.png").id;
+	static int menu = basic_SDL_engi::ResourceManager::getTexture("Textures/buttons/unclicked/menuButt.png").id;
 	int textureID = start;
 	switch (_buttonType)
 	{
@@ -72,6 +73,9 @@ void Button::draw(basic_SDL_engi::SpriteBatch& _spriteBatch)
 		break;
 	case 6:
 		textureID = leaderboard;
+		break;
+	case 7:
+		textureID = menu;
 		break;
 	}
 	

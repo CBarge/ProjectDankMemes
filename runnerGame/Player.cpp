@@ -70,7 +70,7 @@ bool Player::dead()
 
 bool Player::win()
 {
-	return false;
+	return _won;
 }
 
 void Player::jump(float speed)

@@ -13,6 +13,7 @@
 #include "Chaser.h"
 #include "Button.h"
 #include "CharInput.h"
+#include "Leaderboard.h"
 
 //for finding out what is going on, man
 enum class GameState{ PLAYING, EXIT, MAINMENU, SETTINGS, NEXTLEVEL, LOSER, LEADERBOARD, CREDITS, LOOPING, DEAD, HIGHSCORE };
@@ -55,7 +56,11 @@ private:
 	//draws the game to the window
 	void drawGame();
 
+	//draws hud stuff
 	void drawHud();
+
+	//draws text separate from the hub
+	void drawText();
 
 	/// Member Variables
 	basic_SDL_engi::Window _window;					//the window the magic happens on
@@ -63,9 +68,11 @@ private:
 	basic_SDL_engi::InputManager _inputManager;		//for handling input
 	basic_SDL_engi::Camera2D _camera;				//main camera environment
 	basic_SDL_engi::Camera2D _hudCamera;			//hud camera env
+	basic_SDL_engi::Camera2D _menuCamera;			//menu camera env
 	basic_SDL_engi::SpriteBatch _buttonSpriteBatch;	//draws all of the buttons
 	basic_SDL_engi::SpriteBatch _agentSpriteBatch;	//draws all of the agents
-	basic_SDL_engi::SpriteBatch _hudSpriteBatch;
+	basic_SDL_engi::SpriteBatch _hudSpriteBatch;	//specifically for the hud
+	basic_SDL_engi::SpriteBatch _menuSpriteBatch;	//for menu screens
 	basic_SDL_engi::SpriteFont* _spriteFont;
 	basic_SDL_engi::Audio _audio;
 	basic_SDL_engi::Music _music;
@@ -78,13 +85,18 @@ private:
 	int _screenWidth, _screenHeight;
 	float _fps;
 
-	int _currentLevel;		//idea placeholder
+	int _currentLevel;
 
 	Player* _player;				//playa
 	std::vector<Chaser*> _chasers;	//vector of chasers
 	std::vector<Button*> _buttons;	//vector of buttons
 	Button* _startButton;
 	Button* _exitButton;
+	Button* _creditsButton;
+	Button* _menuButton;
+	Button* _leaderButton;
+
+	Leaderboard _leaderboard;
 
 	CharInput* _newName;
 
