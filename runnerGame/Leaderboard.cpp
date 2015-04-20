@@ -10,6 +10,8 @@
 
 Leaderboard::Leaderboard(){
 	filename = "Scores.txt";
+	scores = new <int>;
+	names = new <std::string>;
 }
 Leaderboard::~Leaderboard(){
 

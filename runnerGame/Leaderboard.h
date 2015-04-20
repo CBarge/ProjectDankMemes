@@ -16,6 +16,6 @@ public:
 
 private:
 	std::string filename;
-	std::vector<int> *scores;
-	std::vector<std::string> *names;
+	int* scores;
+	std::string* names;
 };
